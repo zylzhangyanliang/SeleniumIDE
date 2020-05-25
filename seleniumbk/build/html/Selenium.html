@@ -1,0 +1,2454 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="zh-CN" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="zh-CN" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>一、API &mdash; SeleniumIDEBook 1.0.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="二、插件" href="Selenium-plugins.html" />
+    <link rel="prev" title="Welcome to SeleniumIDEBook’s documentation!" href="index.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home"> SeleniumIDEBook
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">一、API</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#id1">一、入门</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id2">1.1 安装</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#selenium-ide">1.2 启动Selenium IDE</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id3">1.3 故障排除</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id4">1.4 欢迎屏幕</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id5">1.5 记录您的第一个测试</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id6">1.6 组织您的测试</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id7">1.6.1测试用例</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id8">1.6.2 测试用例集</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id9">1.6.3 添加测试用例</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id10">1.6.4 删除测试用例</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id11">1.6.5 删除或重命名测试用例</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id12">1.6.6保存工作</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#id13">1.7 回放</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id14">1.7.1 浏览器内</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id15">1.7.2 跨浏览器</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#id16">二、命令行运行器</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id17">2.1 先决条件</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id18">2.2 安装浏览器驱动程序</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#chrome">2.2.1 Chrome</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#edge">2.2.2 Edge</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#firefox">2.2.3 Firefox</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ie">2.2.4 IE</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#safari">2.2.5 Safari</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id19">2.2.6 启动运行器</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#id22">2.3 运行时配置</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id23">2.3.1 在本地不同的浏览器上运行</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#selenium-grid">2.3.2 在Selenium Grid上运行</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id24">2.3.3 指定并行进程数</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id25">2.3.4 Chrome特定功能</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#id26">2.4 触手可及的框架</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#base-url">2.4.1 更改 base URL</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id27">2.4.2 筛选测试用例</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id28">2.4.3 将测试结果输出到文件</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id29">2.4.4 指定默认配置</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#id30">2.5 Selenium IDE 配置</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#test-suite">2.5.1 在 Test Suite 中进行并行化测试</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#id31">2.6 高级选项</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id32">2.6.1 其他参数</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id33">2.6.2 基本用法</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id34">2.6.3 嵌套参数</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id35">2.6.4 数组值</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id36">2.6.5 多个参数</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#id37">2.7 使用代理服务器</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id38">2.7.1 直接代理</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id39">2.7.2 手动代理</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#pac">2.7.3 PAC 代理</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#socks">2.7.4 SOCKS 代理</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id40">2.7.5 系统代理</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#id41">2.8 代码导出</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#id42">三、控制流</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#javascript">3.1 Javascript 表达式</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id43">3.2 可用命令</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id44">3.3 条件分支</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#if">3.3.1 if</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#else-if">3.3.2 else if</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#else">3.3.3 else</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#end">3.3.4 end</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#id45">3.4 循环回放</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#times">3.4.1 times</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#do">3.4.2 do</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#while">3.4.3 while</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#foreach">3.4.4 forEach</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#id46">3.5 嵌套命令</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id47">3.6 语法验证</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#id48">四、代码导出</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id49">4.1 入门</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id50">4.2 源代码跟踪注释</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id51">4.3 支持的导出</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#c-nunit">4.3.1 C#NUnit</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#c-xunit">4.3.2 C#xUnit</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#java-junit">4.3.3 Java JUnit</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#javascript-mocha">4.3.4 Javascript Mocha</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#python-pytest">4.3.5 Python pytest</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ruby-rspec">4.3.6 Ruby RSpec</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#id52">4.4 如何贡献</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id53">4.4.1 创建一个新包</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id54">4.4.2 更新定位器和命令</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id55">4.4.3 创建钩子</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id56">4.4.4 更新语言特定的属性</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id57">4.4.5 将其添加到程序包中</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id58">4.4.6 测试和调整</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#pr">4.4.7 提交 PR</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#id59">五、常见问题解答</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id60">5.1 如何记录悬停?</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id61">5.2 为什么在日期输入字段中键入的数字不能正确显示?</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id62">5.3 如何让 Selenium IDE 等待特定条件成立才能继续进行?</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id63">5.4 如何在文本验证中使用正则表达式?</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id64">5.5 如何滚动?</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id65">5.6 保存文件</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#ide">5.7 如何在严格的代理/防火墙后面安装 IDE?</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id66">5.7.1 正式签署的版本</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#id67">5.8 为什么附加插件后没有出现保存对话框?</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#id68">六、命令</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#add-selection">add selection</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#answer-on-next-prompt">answer on next prompt</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#assert">assert</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#assert-alert">assert alert</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#assert-checked">assert checked</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#assert-confirmation">assert confirmation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#assert-editable">assert editable</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#assert-element-not-present">assert element not present</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#assert-not-checked">assert not checked</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#assert-not-editable">assert not editable</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#assert-not-selected-value">assert not selected value</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#assert-prompt">assert prompt</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#assert-selected-value">assert selected value</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#assert-selected-label">assert selected label</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#assert-text">assert text</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#assert-title">assert title</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#assert-value">assert value</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#check">check</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#choose-cancel-on-next-confirmation">choose cancel on next confirmation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#choose-cancel-on-next-prompt">choose cancel on next prompt</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#choose-ok-on-next-confirmation">choose ok on next confirmation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#click">click</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#click-at">click at</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#close">close</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#debugger">debugger</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#do-1">do</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#double-click">double click</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#double-click-at">double click at</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#drag-and-drop-to-object">drag and drop to object</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#echo">echo</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#edit-content">edit content</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#else-1">else</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#else-if-1">else if</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#end-1">end</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#execute-script">execute script</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#execute-async-script">execute async script</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#for-each">for each</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#if-1">if</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#mouse-down">mouse down</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#mouse-move-at">mouse move at</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#open">open</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#pause">pause</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#remove-selection">remove selection</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#repeat-if">repeat if</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#run">run</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#run-script">run script</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#select">select</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#select-frame">select frame</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#select-window">select window</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#send-keys">send keys</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#set-speed">set speed</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#set-window-size">set window size</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#store">store</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#store-attribute">store attribute</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#store-json">store json</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#store-text">store text</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#store-title">store title</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#store-value">store value</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#store-window-handle">store window handle</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#store-xpath-count">store xpath count</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#submit">submit</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#times-1">times</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#type">type</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#uncheck">uncheck</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#verify">verify</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#verify-checked">verify checked</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#verify-editable">verify editable</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#verify-element-present">verify element present</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#verify-element-not-present">verify element not present</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#verify-not-checked">verify not checked</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#verify-not-editable">verify not editable</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#verify-not-selected-value">verify not selected value</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#verify-not-text">verify not text</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#verify-selected-label">verify selected label</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#verify-selected-value">verify selected value</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#verify-text">verify text</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#verify-title">verify title</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#verify-value">verify value</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#wait-for-element-editable">wait for element editable</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#wait-for-element-not-editable">wait for element not editable</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#wait-for-element-not-present">wait for element not present</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#wait-for-element-not-visible">wait for element not visible</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#wait-for-element-present">wait for element present</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#wait-for-element-visible">wait for element visible</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#webdriver-answer-on-visible-prompt">webdriver answer on visible prompt</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#webdriver-choose-cancel-on-visible-confirmation">webdriver choose cancel on visible confirmation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#webdriver-choose-cancel-on-visible-prompt">webdriver choose cancel on visible prompt</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#webdriver-choose-ok-on-visible-confirmation">webdriver choose ok on visible confirmation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#while-1">while</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#id76">七、参数</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#alerttext">alertText</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#answer">answer</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#attributelocator">attributeLocator</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#arrayvariablename">arrayVariableName</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#conditionalexpression">conditionalExpression</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#coord">coord</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#expression">expression</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#formlocator">formLocator</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#handle">handle</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#iteratorvariablename">iteratorVariableName</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#json">json</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#keysequence">keySequence</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#locator">locator</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#locatorofdragdestinationobject">locatorOfDragDestinationObject</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#locatorofobjecttobedragged">locatorOfObjectToBeDragged</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#looplimit">loopLimit</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#message">message</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#optionlocator">optionLocator</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#pattern">pattern</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#region">region</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#resolution">resolution</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#script">script</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#selectlocator">selectLocator</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#testcase">testCase</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#text">text</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#times-2">times</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#url">url</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#value">value</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#variablename">variableName</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#waittime">waitTime</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#xpath">xpath</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="Selenium-plugins.html">二、插件</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">SeleniumIDEBook</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>一、API</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/Selenium.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="api">
+<h1>一、API<a class="headerlink" href="#api" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="id1">
+<h2>一、入门<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id2">
+<h3>1.1 安装<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
+<p>​ 从Chrome或Firefox网络商店安装Selenium IDE。</p>
+</div>
+<div class="section" id="selenium-ide">
+<h3>1.2 启动Selenium IDE<a class="headerlink" href="#selenium-ide" title="Permalink to this headline">¶</a></h3>
+<p>​ 安装后，通过浏览器菜单栏单击其图标来启动它。</p>
+</div>
+<div class="section" id="id3">
+<h3>1.3 故障排除<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
+<p>​ 如果您没有在菜单栏看到Selenium IDE图标，请参照以下解决方案。</p>
+<ul>
+<li><p>选项1</p>
+<p>​ 确保在浏览器的扩展程序设置中启用了
+IDE。您可以通过在地址栏中键入以下内容并点 击 Enter。</p>
+<ul class="simple">
+<li><p>Chrome:chrome://extensions</p></li>
+<li><p>Firefox: <a class="reference external" href="about:addons">about:addons</a></p></li>
+</ul>
+</li>
+<li><p>选项2</p>
+<p>​
+该扩展名可能已启用，但图标已隐藏。尝试调整菜单栏的大小，以提供更多空间。</p>
+</li>
+</ul>
+<p>​ 在 Chrome
+浏览器中，您可以通过以下方法进行操作:单击地址栏的右侧，按住该单
+击，然后将其向左或向右拖动。</p>
+<p>​ 在 Firefox 中，您需要右键单击，单击
+Customize，对菜单栏进行调整，然后单击 Done。</p>
+</div>
+<div class="section" id="id4">
+<h3>1.4 欢迎屏幕<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
+<p>​ 启动 Selenium IDE 后，将显示一个欢迎对话框。 这将使您快速访问以下选项:</p>
+<ul class="simple">
+<li><p>在新项目中记录测试</p></li>
+<li><p>打开一个现有项目</p></li>
+<li><p>创建一个新项目</p></li>
+<li><p>关闭Selenium IDE</p></li>
+</ul>
+<p>​ 如果这是您第一次使用Selenium
+IDE（或者您正在启动新项目），请选择第一个选项。</p>
+</div>
+<div class="section" id="id5">
+<h3>1.5 记录您的第一个测试<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
+<p>​ 创建新项目后，将提示您命名它，然后要求您提供基本 URL。基本 URL
+是您正在测试 的应用程序的
+URL。只需设置一次，他就会在该项目的所有测试中使用它。如果需要，您可以稍后更改。</p>
+<p>​ 完成这些设置后，将打开一个新的浏览器窗口，加载基本 URL，并开始记录。</p>
+<p>​ 与页面进行交互，您的每个动作都将记录在 Selenium IDE
+中。要停止录制，请切换到 Selenium IDE 窗口，然后单击录制图标。</p>
+</div>
+<div class="section" id="id6">
+<h3>1.6 组织您的测试<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id7">
+<h4>1.6.1测试用例<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h4>
+<p>​ 您可以通过单击左侧边栏菜单顶部的+号(在 Tests
+标题的右侧)，将新创建的测试用例命 名，最后通过单击 Add 按钮完成添加。</p>
+<p>​ 添加后，您可以手动输入命令，也可以单击 Selenium IDE 右上角的记录图标。</p>
+</div>
+<div class="section" id="id8">
+<h4>1.6.2 测试用例集<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h4>
+<p>​ 测试用例可以一起分组到测试用例集中。在创建项目时，Default Suite
+会创建一个，并且您的第一个测试用例会自动添加到其中。</p>
+</div>
+<div class="section" id="id9">
+<h4>1.6.3 添加测试用例<a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h4>
+<p>​
+要将测试用例填加到测试用例集之中，请将鼠标悬停在测试用例的名称上，然后执行以
+下操作:</p>
+<p>​ 步骤一:单击 Tset Suites 标题右侧显示的图标。</p>
+<p>​ 步骤二请点击 Add tests。</p>
+<p>​ 步骤三:从菜单中选择要添加的测试用例。</p>
+<p>​ 步骤四:请点击 Select。</p>
+</div>
+<div class="section" id="id10">
+<h4>1.6.4 删除测试用例<a class="headerlink" href="#id10" title="Permalink to this headline">¶</a></h4>
+<p>​
+要删除某条测试用例，请将鼠标悬停在该测试用例上，然后单击出现在其名称右侧的
+❌。</p>
+</div>
+<div class="section" id="id11">
+<h4>1.6.5 删除或重命名测试用例<a class="headerlink" href="#id11" title="Permalink to this headline">¶</a></h4>
+<p>​
+要删除测试用例，请单击其名称右侧出现的图标，单击Delete，然后在出现Delete提示时再次单击。</p>
+<p>​
+要重命名测试用例，请单击要重命名的测试用例右侧的图标，在下拉菜单中选择Rename，并在弹出的对话框中输入新的命名，最后单击Rename。</p>
+</div>
+<div class="section" id="id12">
+<h4>1.6.6保存工作<a class="headerlink" href="#id12" title="Permalink to this headline">¶</a></h4>
+<p>​ 要保存您刚刚在 Selenium IDE 中完成的所有操作，请单击 Selenium IDE
+右上角的保存图标。</p>
+</div>
+</div>
+<div class="section" id="id13">
+<h3>1.7 回放<a class="headerlink" href="#id13" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id14">
+<h4>1.7.1 浏览器内<a class="headerlink" href="#id14" title="Permalink to this headline">¶</a></h4>
+<p>​ 您可以在Selenium
+IDE中回放测试用例，方法是选择要回放的测试用例或测试用例集，然后单击测试编辑器上方菜单栏中的回放按钮(见下图)。</p>
+<div class="figure align-default">
+<img alt="_images/play.png" src="_images/play.png" />
+</div>
+<p>​
+测试用例将在浏览器中回放，如果仍在从录制中打开一个窗口，则将其用于回放。否则，
+将打开并使用一个新窗口。</p>
+</div>
+<div class="section" id="id15">
+<h4>1.7.2 跨浏览器<a class="headerlink" href="#id15" title="Permalink to this headline">¶</a></h4>
+<p>​ 如果您想在其他浏览器上运行 Selenium IDE 测试，请务必查看命令行运行器。</p>
+</div>
+</div>
+</div>
+<div class="section" id="id16">
+<h2>二、命令行运行器<a class="headerlink" href="#id16" title="Permalink to this headline">¶</a></h2>
+<p>​ 现在，您可以在任何浏览器上并行运行所有 Selenium IDE 测试，也可以在
+Grid 上运行， 而无需编写任何代码。</p>
+<p>​ 只需安装 Selenium IDE
+命令行运行程序，获取必要的浏览器驱动程序(如果在本地运
+行测试)以及从命令提示符启动具有所需选项的运行程序，就可以了。</p>
+<div class="figure align-default">
+<img alt="_images/runner.png" src="_images/runner.png" />
+</div>
+<div class="section" id="id17">
+<h3>2.1 先决条件<a class="headerlink" href="#id17" title="Permalink to this headline">¶</a></h3>
+<p>​ 要使命令行程序正常运行，需要以下依赖项：</p>
+<ul class="simple">
+<li><p>node （Node.js编程语言）版本8或10。</p></li>
+<li><p>npm (Node.js 程序包管理器)，通常与 node 一起安装。</p></li>
+<li><p>Selenium-side-runner (Selenium IDE 命令行程序)。</p></li>
+<li><p>以及我们要使用的浏览器驱动程序(在下一节中有更多介绍)</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;</span> <span class="n">brew</span> <span class="n">install</span> <span class="n">node</span>
+<span class="o">&gt;</span> <span class="n">npm</span> <span class="n">install</span> <span class="o">-</span><span class="n">g</span> <span class="n">selenium</span><span class="o">-</span><span class="n">side</span><span class="o">-</span><span class="n">runner</span>
+</pre></div>
+</div>
+<p>​
+注意，您的系统配置可能与上面的示例中所使用的配置不同（例如，MacOS上的Homebrew）。如果是这样，请参阅<a class="reference external" href="https://nodejs.org/en/download/package-manager/">软件包管理的Node安装文档</a>，或直接从<a class="reference external" href="https://nodejs.org/en/download/">Node
+downloads</a>页面下载适用于您操作系统的Node安装程序。</p>
+</div>
+<div class="section" id="id18">
+<h3>2.2 安装浏览器驱动程序<a class="headerlink" href="#id18" title="Permalink to this headline">¶</a></h3>
+<p>​ 如果要在本地运行测试用例，则每个浏览器都需要一些其他设置。</p>
+<p>​ Selenium
+通过一个成为浏览器驱动程序的小型二进制应用程序与每个浏览器进行通
+信。每个浏览器都有自己的驱动程序，您可以手动下载这些浏览器驱动程序并将其添加到系统路径中，也可以使用软件包管理器安装最新版本的浏览器驱动程序(推荐)。</p>
+<p>​ 您还需要在计算机上安装浏览器。</p>
+<div class="section" id="chrome">
+<h4>2.2.1 Chrome<a class="headerlink" href="#chrome" title="Permalink to this headline">¶</a></h4>
+<p>​ 要使用 Chrome，您首先需要安装 ChromeDriver。</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;</span> <span class="n">npm</span> <span class="n">install</span> <span class="o">-</span><span class="n">g</span> <span class="n">chromedriver</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="edge">
+<h4>2.2.2 Edge<a class="headerlink" href="#edge" title="Permalink to this headline">¶</a></h4>
+<p>​ 要使用 Microsoft Edge，您需要在 Windows 上运行，并且还需要安装
+EdgeDriver。</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;</span> <span class="n">npm</span> <span class="n">install</span>  <span class="o">-</span><span class="n">g</span> <span class="n">edgedriver</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="firefox">
+<h4>2.2.3 Firefox<a class="headerlink" href="#firefox" title="Permalink to this headline">¶</a></h4>
+<p>​ 要使用 Firefox，您首先需要安装 geckodriver。</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;</span> <span class="n">npm</span> <span class="n">install</span> <span class="o">-</span><span class="n">g</span> <span class="n">geckodriver</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="ie">
+<h4>2.2.4 IE<a class="headerlink" href="#ie" title="Permalink to this headline">¶</a></h4>
+<p>​ 要使用 IE 浏览器，您需要在 Windows 上运行，并且还需要安装 IEDriver。</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;</span> <span class="n">npm</span> <span class="n">install</span> <span class="o">-</span><span class="n">g</span> <span class="n">iedriver</span>
+</pre></div>
+</div>
+<p>​
+要使用IEdriver工作，还需要一些其他的设置。详细信息<a class="reference external" href="https://github.com/SeleniumHQ/selenium/wiki/InternetExplorerDriver">在这里</a>。</p>
+</div>
+<div class="section" id="safari">
+<h4>2.2.5 Safari<a class="headerlink" href="#safari" title="Permalink to this headline">¶</a></h4>
+<p>​ 要使用safari，您首先需要安装SafariDriver。</p>
+<p>​ 它附带了最新版本的
+Safari。您只需采取几个步骤就可以在计算机上启用它。有关详细 信息，请参见
+<a class="reference external" href="https://developer.apple.com/documentation/webkit/testing_with_webdriver_in_safari">SafariDriver
+文档的本部分</a>。</p>
+</div>
+<div class="section" id="id19">
+<h4>2.2.6 启动运行器<a class="headerlink" href="#id19" title="Permalink to this headline">¶</a></h4>
+<p>​ 安装 selenium-side-runner
+完所有组件后，只需要在命令行中调用测试，然后在调用之
+前保存的项目文件的路径即可运行测试。</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">seleniumside</span><span class="o">-</span><span class="n">runner</span> <span class="o">/</span><span class="n">path</span><span class="o">/</span><span class="n">to</span><span class="o">/</span><span class="n">your</span><span class="o">-</span><span class="n">project</span><span class="o">.</span><span class="n">side</span>
+</pre></div>
+</div>
+<p>​ 注意，如果您有多个.side 文件，则可以使用通配符(例如/path/to/<a href="#id20"><span class="problematic" id="id21">*</span></a>.side)</p>
+<p>​ 当您运行此命令时，它将在多个浏览器窗口中并行启动测试，并跨 n 进程分布(
+n是计算机上可用 CPU 内核的数量)。</p>
+<p>​ 在运行时，可以通过提供的各种参数配置进程数量(以及其他事项)。</p>
+<p>​
+注意:并行执行在测试用例集级别上自动发生。如果需要并行执行测试用例集中的测试用例，则需要更改一个设置。有关详细信息，请参见测试用例集中的测试并行化。</p>
+</div>
+</div>
+<div class="section" id="id22">
+<h3>2.3 运行时配置<a class="headerlink" href="#id22" title="Permalink to this headline">¶</a></h3>
+<p>​ 使用运行程序，您可以在运行时传递不同的配置参数。</p>
+<div class="section" id="id23">
+<h4>2.3.1 在本地不同的浏览器上运行<a class="headerlink" href="#id23" title="Permalink to this headline">¶</a></h4>
+<p>​ 最常见的功能用法是为本地测试执行指定不同的浏览器。</p>
+<p>​ 如果需要指定的浏览器为 Chrome 浏览器，您可以在 Selenium IDE
+的命令行程序中键 入以下命令:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">selenium</span><span class="o">-</span><span class="n">side</span><span class="o">-</span><span class="n">runner</span> <span class="o">-</span><span class="n">c</span> <span class="s2">&quot;browserName=chrome&quot;</span>
+</pre></div>
+</div>
+<p>​ 如果需要指定的浏览器为 IE 浏览器，您可以在 Selenium IDE
+的命令行程序中键入以下 命令:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">selenium</span><span class="o">-</span><span class="n">side</span><span class="o">-</span><span class="n">runner</span> <span class="o">-</span><span class="n">c</span> <span class="s2">&quot;browserName=&#39;internet explorer&#39;&quot;</span>
+</pre></div>
+</div>
+<p>​ 如果需要指定的浏览器为 Edge 浏览器，您可以在 Selenium IDE
+的命令行程序中键入以下命令:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">selenium</span><span class="o">-</span><span class="n">side</span><span class="o">-</span><span class="n">runner</span> <span class="o">-</span><span class="n">c</span> <span class="s2">&quot;browserName=edge&quot;</span>
+</pre></div>
+</div>
+<p>​ 如果需要指定的浏览器为火狐浏览器，您可以在 Selenium IDE
+的命令行程序中键入以 下命令:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">selenium</span><span class="o">-</span><span class="n">side</span><span class="o">-</span><span class="n">runner</span> <span class="o">-</span><span class="n">c</span> <span class="s2">&quot;browserName=firefox&quot;</span>
+</pre></div>
+</div>
+<p>​ 如果需要指定的浏览器为 safari 浏览器，您可以在 Selenium IDE
+的命令行程序中键入 以下命令:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">selenium</span><span class="o">-</span><span class="n">side</span><span class="o">-</span><span class="n">runner</span> <span class="o">-</span><span class="n">c</span> <span class="s2">&quot;browserName=safari&quot;</span>
+</pre></div>
+</div>
+<p>​
+注意:在本地运行测试用例时，每个浏览器都需要进行一些设置。有关详细信息，请参见2.2节安装浏览器驱动程序。</p>
+</div>
+<div class="section" id="selenium-grid">
+<h4>2.3.2 在Selenium Grid上运行<a class="headerlink" href="#selenium-grid" title="Permalink to this headline">¶</a></h4>
+<p>​ 要在 Grid(例如，您自己的 Grid 或诸如 Sauce Labs
+的托管程序)上运行测试，可以 指定它以及其他功能。</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>Selenium-side-runner --version http://locahost:4444/wd/hub -c“browserName=&#39;internet explorer&#39; version=&#39;11.0&#39; platform=&#39;Windows 8.1”
+</pre></div>
+</div>
+<p>​ –version 指定 Grid 的 URL，并且-c 是您希望 Grid 使用的功能。</p>
+<p>​
+您可以<a class="reference external" href="https://github.com/SeleniumHQ/selenium/wiki/DesiredCapabilities">在此处</a>查看可用功能的完整列表。</p>
+</div>
+<div class="section" id="id24">
+<h4>2.3.3 指定并行进程数<a class="headerlink" href="#id24" title="Permalink to this headline">¶</a></h4>
+<p>​ 在 Grid
+上运行时，您可能需要控制正在运行的并行会话数。为此，您可以使用-w n 命
+令标志(其中 n 是所需的进程数)。</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Selenium</span><span class="o">-</span><span class="n">side</span><span class="o">-</span><span class="n">runner</span> <span class="o">-</span><span class="n">w</span> <span class="mi">10</span> <span class="o">--</span><span class="n">server</span> <span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">locahost</span><span class="p">:</span><span class="mi">4444</span><span class="o">/</span><span class="n">wd</span><span class="o">/</span><span class="n">hub</span>
+</pre></div>
+</div>
+<p>​ 运行程序将自动将工作程序数量设置为计算机上可用的 CPU
+核心数量。在大多数情况 下，这是最佳的选择。</p>
+</div>
+<div class="section" id="id25">
+<h4>2.3.4 Chrome特定功能<a class="headerlink" href="#id25" title="Permalink to this headline">¶</a></h4>
+<p>​ 如果您将 Chrome 安装在计算机的非标准位置，则可以指定路径，以便
+ChromeDriver 知道要查找的位置。</p>
+<p>​ 您可以在 Selenium IDE 命令行程序中键入以下命令来指定路径:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">selenium</span><span class="o">-</span><span class="n">side</span><span class="o">-</span><span class="n">runner</span> <span class="o">-</span><span class="n">c</span> <span class="s2">&quot;goog:chromeOptions.binary=&#39;/path/to/non-standard/Chrome/insta</span>
+<span class="n">ll</span><span class="s1">&#39;&quot;</span>
+</pre></div>
+</div>
+<p>​ 使用特定于 Chrome 的功能，您还可以运行无头测试。</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">selenium</span><span class="o">-</span><span class="n">side</span><span class="o">-</span><span class="n">runner</span> <span class="o">-</span><span class="n">c</span> <span class="s2">&quot;goog:chromeOptions.args=[disable-infobars, headless]&quot;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="id26">
+<h3>2.4 触手可及的框架<a class="headerlink" href="#id26" title="Permalink to this headline">¶</a></h3>
+<p>​
+除此之外，还有一些其他的细节。这些正是您期望在传统的测试自动化框架中可以得到
+的东西。</p>
+<div class="section" id="base-url">
+<h4>2.4.1 更改 base URL<a class="headerlink" href="#base-url" title="Permalink to this headline">¶</a></h4>
+<p>​ 通过指定不同的 base
+URL，您可以轻松地将测试指向不同的环境(例如，本地开发、测
+试、试运行、生产)。</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">selenium</span><span class="o">-</span><span class="n">side</span><span class="o">-</span><span class="n">runner</span> <span class="o">--</span><span class="n">base</span><span class="o">-</span><span class="n">url</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">localhost</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id27">
+<h4>2.4.2 筛选测试用例<a class="headerlink" href="#id27" title="Permalink to this headline">¶</a></h4>
+<p>​ 您还可以选择使用–filter target 命令标志(其中 target
+是正则表达式值)运行测试的目
+标子集。包含给定搜索条件的测试名称将是唯一运行的测试名称。</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Selenium</span><span class="o">-</span><span class="n">side</span><span class="o">-</span><span class="n">runner</span> <span class="o">--</span><span class="nb">filter</span> <span class="n">smoke</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id28">
+<h4>2.4.3 将测试结果输出到文件<a class="headerlink" href="#id28" title="Permalink to this headline">¶</a></h4>
+<p>​ 如果需要将测试结果导出到文件中(例如，作为 CI
+进程的一部分运行时)，则可以使用–output-directory 和–output-format
+标志的组合。</p>
+<p>​ –output-directory
+定义放置测试结果文件的位置。它可以采用绝对路径或相对路径。</p>
+<p>​ –output-format 定义用于测试结果文件的格式。它可以是 jest(例如，JSON)或
+junit (例如，XML)。默认格式为 jest(例如，如果您未指定类型)。</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Selenium</span><span class="o">-</span><span class="n">side</span><span class="o">-</span><span class="n">runner</span> <span class="o">--</span><span class="n">output</span><span class="o">-</span><span class="n">directory</span><span class="o">=</span><span class="n">results</span>
+<span class="c1"># Outputs result in ‘jest’ frormat in ‘./results/projectName.json’</span>
+<span class="n">selenium</span><span class="o">-</span><span class="n">side</span><span class="o">-</span><span class="n">runner</span><span class="o">--</span><span class="n">output</span><span class="o">-</span><span class="n">directory</span><span class="o">=</span><span class="n">results</span><span class="o">--</span><span class="n">output</span><span class="o">-</span><span class="nb">format</span><span class="o">=</span> <span class="n">jest</span>
+<span class="c1"># Outputs results in `jest` frormat in`./results/projectName.json&#39;</span>
+<span class="n">selenium</span><span class="o">-</span><span class="n">side</span><span class="o">-</span><span class="n">runner</span><span class="o">--</span><span class="n">output</span><span class="o">-</span><span class="n">directory</span><span class="o">=</span><span class="n">results</span><span class="o">--</span><span class="n">output</span><span class="o">-</span><span class="nb">format</span><span class="o">=</span> <span class="n">junit</span>
+<span class="c1"># Outputs results in `junit` frormat in`./results/projectName.xml&#39;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id29">
+<h4>2.4.4 指定默认配置<a class="headerlink" href="#id29" title="Permalink to this headline">¶</a></h4>
+<p>​
+您可以将运行时参数存储在配置文件中，而不是记住您需要的所有命令行参数(这可能
+会变得很笨拙)。</p>
+<p>​ 您可以使用两种配置文件。</p>
+<ul>
+<li><p>选项1</p>
+<p>在将要运行测试的目录中创建一个.side.yml 文件。运行器将自动运行它。
+这是文件内容的示例。</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>capabilities:
+browserName:”firefox”
+baseUrl:”https://www/seleniumhq.org” Server:”http://localhost:4444/wd/hub”
+</pre></div>
+</div>
+<p>如果要忽略文件并改变命令行参数，在运行时与其他命令一起使用–no-sideyml。</p>
+</li>
+<li><p>选项2</p>
+<p>除了使用.side.yml 文件之外，您还可以在 YAML
+文件中使用您选择的名称和位置指定运行时参数，然后在运行测试时指定其位置。</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>Selenium-side-runner --config-file “/path/to/your/config.yaml”
+</pre></div>
+</div>
+<p>注意:使用–config-file 标志时，.side.yml 将被忽略。</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="section" id="id30">
+<h3>2.5 Selenium IDE 配置<a class="headerlink" href="#id30" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="test-suite">
+<h4>2.5.1 在 Test Suite 中进行并行化测试<a class="headerlink" href="#test-suite" title="Permalink to this headline">¶</a></h4>
+<p>​
+运行器以开箱即用的方式并行执行测试用例，但测试用例集中的测试按顺序执行。</p>
+<p>​ 要在给定测试用例集中并行运行测试用例，您需要在 Selenium IDE
+中更新该测试用例 的设置。</p>
+<blockquote>
+<div><p>​ 步骤一:切换到 Test Suites Selenium IDE 中的视图;</p>
+<p>​ 步骤二:点击您要配置的套件名称旁边的下拉菜单，然后点击 Settings;</p>
+<p>​ 步骤三:单击复选框 Run in parallel;</p>
+<p>​ 步骤四:点击 submit;</p>
+<p>​ 步骤五:保存您的 Selenium IDE 项目文件。</p>
+</div></blockquote>
+<p>​ 要配置多个测试用例集以这种方式运行，请在每个测试用例集中重复步骤
+1-4.完成后， 请确保保存项目文件。</p>
+</div>
+</div>
+<div class="section" id="id31">
+<h3>2.6 高级选项<a class="headerlink" href="#id31" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id32">
+<h4>2.6.1 其他参数<a class="headerlink" href="#id32" title="Permalink to this headline">¶</a></h4>
+<p>​ Selenium IDE 的插件可以指定自己的唯一运行时参数。您可以通过–params
+标志使用 它们。</p>
+<p>​ 此选项采用各种选项的字符串(类似于您指定功能的方式)。</p>
+</div>
+<div class="section" id="id33">
+<h4>2.6.2 基本用法<a class="headerlink" href="#id33" title="Permalink to this headline">¶</a></h4>
+<p>​ 您指定参数的名称及其值。最基本的方法是指定一个字符串值。</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>selenium-side-runner --params “a=’example-value’”
+</pre></div>
+</div>
+</div>
+<div class="section" id="id34">
+<h4>2.6.3 嵌套参数<a class="headerlink" href="#id34" title="Permalink to this headline">¶</a></h4>
+<p>​ 参数也可以使用点符号进行嵌套。</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>selenium-side-runner --params “a.b=’another example-value’”
+</pre></div>
+</div>
+</div>
+<div class="section" id="id35">
+<h4>2.6.4 数组值<a class="headerlink" href="#id35" title="Permalink to this headline">¶</a></h4>
+<p>​ 除了字符串，还可以指定字母数字值的数组。</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>Selenium-side-runner --params “a.b.c=[1,2,3]”
+</pre></div>
+</div>
+</div>
+<div class="section" id="id36">
+<h4>2.6.5 多个参数<a class="headerlink" href="#id36" title="Permalink to this headline">¶</a></h4>
+<p>​ –params 只能被调用一次，但是可以通过空格分隔来指定多个参数。</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>Selenium-side-runner --params “a=’example-value’ a.b=’another example-value’a.b.c=[1,2,3]”
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="id37">
+<h3>2.7 使用代理服务器<a class="headerlink" href="#id37" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id38">
+<h4>2.7.1 直接代理<a class="headerlink" href="#id38" title="Permalink to this headline">¶</a></h4>
+<p>​ 此选项将 WebDriver 配置为绕过所有浏览器代理。</p>
+<p>​ 在命令中:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">selenium</span><span class="o">-</span><span class="n">side</span><span class="o">-</span><span class="n">runner</span> <span class="o">--</span><span class="n">proxy</span><span class="o">-</span><span class="nb">type</span><span class="o">=</span><span class="n">direct</span>
+</pre></div>
+</div>
+<p>​ 在.side.yaml :</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">proxyType</span><span class="p">:</span><span class="n">direct</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id39">
+<h4>2.7.2 手动代理<a class="headerlink" href="#id39" title="Permalink to this headline">¶</a></h4>
+<p>​ 手动配置浏览器代理。</p>
+<p>​ 在命令行中:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>Selenium-side-runner
+--proxy-options=”http=localhost:434 bypass=[http://localhost:434, http://localhost:8080]”
+</pre></div>
+</div>
+<p>​ 在.side.yaml:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">proxyType</span><span class="p">:</span><span class="n">manual</span> <span class="n">proxyOptions</span><span class="p">:</span> <span class="n">http</span><span class="p">:</span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">localhost</span><span class="p">:</span><span class="mi">434</span> <span class="n">https</span><span class="p">:</span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">localhost</span><span class="p">:</span><span class="mi">434</span> <span class="n">ftp</span><span class="p">:</span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">localhost</span><span class="p">:</span><span class="mi">434</span> <span class="n">bypass</span><span class="p">:</span>
+<span class="o">-</span> <span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">localhost</span><span class="p">:</span><span class="mi">8080</span>
+<span class="o">-</span> <span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">host</span><span class="p">:</span><span class="mi">434</span>
+<span class="o">-</span> <span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">somethingelse</span><span class="p">:</span><span class="mi">32</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="pac">
+<h4>2.7.3 PAC 代理<a class="headerlink" href="#pac" title="Permalink to this headline">¶</a></h4>
+<p>​ 配置 WebDriver 以使用给定 URl 处的 PAC 文件设置浏览器代理。</p>
+<p>​ 在命令行中:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>Selenium-side-runner--proxy-type=pac--proxy-options=”http://lo
+calhost/pac”
+</pre></div>
+</div>
+<p>​ 在.side.yaml:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">proxyType</span> <span class="p">:</span> <span class="n">pac</span>
+<span class="n">proxyOptions</span> <span class="p">:</span> <span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">localhost</span><span class="o">/</span><span class="n">pac</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="socks">
+<h4>2.7.4 SOCKS 代理<a class="headerlink" href="#socks" title="Permalink to this headline">¶</a></h4>
+<p>​ 为 SOCKS 代理创建代理配置。</p>
+<p>​ 在命令行中:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>Selenium-side-runner--proxy-type=socks--proxy-options=
+”socksProxy=localhost:434 socksVersion=5”
+</pre></div>
+</div>
+<p>​ 在.side.yaml :</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">proxyType</span><span class="p">:</span> <span class="n">socks</span>
+<span class="n">proxyOptions</span><span class="p">:</span>
+<span class="n">sockProxy</span><span class="p">:</span> <span class="n">localhost</span><span class="p">:</span><span class="mi">434</span>
+<span class="n">socksVersion</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id40">
+<h4>2.7.5 系统代理<a class="headerlink" href="#id40" title="Permalink to this headline">¶</a></h4>
+<p>​ 配置 WebDriver 以使用当前系统的代理。</p>
+<p>​ 在命令行中:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Selenium</span><span class="o">-</span><span class="n">side</span><span class="o">-</span><span class="n">runner</span> <span class="o">--</span><span class="n">proxy</span><span class="o">-</span><span class="nb">type</span><span class="o">=</span><span class="n">system</span>
+</pre></div>
+</div>
+<p>​ 在.side.yaml :</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">proxyType</span> <span class="p">:</span><span class="n">system</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="id41">
+<h3>2.8 代码导出<a class="headerlink" href="#id41" title="Permalink to this headline">¶</a></h3>
+<p>​ 如果您想学习如何将记录的测试用例转换为 WebDriver
+代码，或者想要将记录的测试
+用例集成到现有的自定义测试框架中，则需要的是代码导出，现在可用于某些语言。您可以<a class="reference external" href="https://www.selenium.dev/selenium-ide/docs/en/introduction/code-export">在此处</a>了解更多<a class="reference external" href="https://www.selenium.dev/selenium-ide/docs/en/introduction/code-export">信息</a>!</p>
+</div>
+</div>
+<div class="section" id="id42">
+<h2>三、控制流<a class="headerlink" href="#id42" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="javascript">
+<h3>3.1 Javascript 表达式<a class="headerlink" href="#javascript" title="Permalink to this headline">¶</a></h3>
+<p>​ 通过使用 JavaScript 表达式检查应用程序中的条件。</p>
+<p>​ 您可以在测试过程中的任何时候使用 execute script 或 execute async
+script 命令运行 一段 JavaScript
+程序，并将结果存储在变量中。这些变量可以在控制流命令中使用。</p>
+<p>​ 您也可以直接在控制流命令中使用 JavaScript 表达式。</p>
+</div>
+<div class="section" id="id43">
+<h3>3.2 可用命令<a class="headerlink" href="#id43" title="Permalink to this headline">¶</a></h3>
+<p>​ 控制流命令通过指定打开和关闭命令来表示一组命令(或块)来工作。</p>
+<p>​ 以下是每个可用的控制流命令以及它们的伴随命令和/或关闭命令。</p>
+<ul class="simple">
+<li><p>if,else if,else,end</p></li>
+<li><p>times,end</p></li>
+<li><p>do,repeat if</p></li>
+<li><p>while,end</p></li>
+</ul>
+<p>让我们逐一介绍示例。</p>
+</div>
+<div class="section" id="id44">
+<h3>3.3 条件分支<a class="headerlink" href="#id44" title="Permalink to this headline">¶</a></h3>
+<p>​ 条件分支使您可以更改测试中的行为。</p>
+<div class="figure align-default">
+<img alt="_images/图片1.png" src="_images/图片1.png" />
+</div>
+<div class="section" id="if">
+<h4>3.3.1 if<a class="headerlink" href="#if" title="Permalink to this headline">¶</a></h4>
+<p>​ 这是条件块的打开命令。</p>
+<p>​ 同时提供了您要评估的 JavaScript 表达式。这可以包含从测试中的先前
+JavaScript 表 达式创建的变量。所有这些都 target 输入到 if
+命令的输入字段中。</p>
+<p>​ 如果该表达式评估为 true
+则测试用例将执行它后面，直到下一个条件控制流命令命令 (例如，else
+if，else，或 end)。</p>
+<p>​ 如果表达式的计算来 false
+将跳过随后的命令和跳转到下一个相关条件控制流命令(例 如，else
+if，else，或 end)。</p>
+</div>
+<div class="section" id="else-if">
+<h4>3.3.2 else if<a class="headerlink" href="#else-if" title="Permalink to this headline">¶</a></h4>
+<p>​ 该命令在 if 命令块中使用。</p>
+<p>​ 就像 if 在 target 输入字段中使用 JavaScript
+表达式来求值一样，执行它后面的命令分
+支，或者跳到下一个相关的控制流命令(例如 else 或 end)。</p>
+</div>
+<div class="section" id="else">
+<h4>3.3.3 else<a class="headerlink" href="#else" title="Permalink to this headline">¶</a></h4>
+<p>​ else 是您在一个 if
+区块中可以拥有的最终条件。如果不满足任何先决条件，则将执行 此命令分支。</p>
+<p>​ 完成后，将跳转到 end 命令。</p>
+</div>
+<div class="section" id="end">
+<h4>3.3.4 end<a class="headerlink" href="#end" title="Permalink to this headline">¶</a></h4>
+<p>​
+该命令终止条件命令块。没有它，命令块将不完整，您将收到一条有用的错误消息，让
+您知道何时尝试运行测试。</p>
+</div>
+</div>
+<div class="section" id="id45">
+<h3>3.4 循环回放<a class="headerlink" href="#id45" title="Permalink to this headline">¶</a></h3>
+<p>​ 循环使您可以遍历给定的命令集。</p>
+<div class="section" id="times">
+<h4>3.4.1 times<a class="headerlink" href="#times" title="Permalink to this headline">¶</a></h4>
+<p>​ 有了 times 你可以指定一个迭代次数要执行的命令集。该数字进入命令的
+target 输入字 段 times。</p>
+<p>​ 要关闭 times 命令块，请确保使用 end 命令。</p>
+<div class="figure align-default">
+<img alt="_images/图片2.png" src="_images/图片2.png" />
+</div>
+</div>
+<div class="section" id="do">
+<h4>3.4.2 do<a class="headerlink" href="#do" title="Permalink to this headline">¶</a></h4>
+<p>​ 您从 do 命令开始此循环，然后是要执行的命令，然后以 repeat if
+命令结束。repeat if 接受您要在 target 输入字段中求值的 JavaScript
+表达式。</p>
+<p>​ do 将先执行之后的命令，然后再 repeat if
+对中的表达式求值。如果表达式返回 true 则 测试将跳回到 do
+命令并重复该序列。</p>
+<div class="figure align-default">
+<img alt="_images/图片3.png" src="_images/图片3.png" />
+</div>
+<p>​ 这将一直持续到条件返回 false 或触发无限循环保护-默认为 1000
+尝试。您可以通过 value 在 repeat if
+命令的输入字段中指定一个数字来覆盖此默认值。</p>
+</div>
+<div class="section" id="while">
+<h4>3.4.3 while<a class="headerlink" href="#while" title="Permalink to this headline">¶</a></h4>
+<p>​ 通过 while 提供 JavaScript 表达式，您希望在 target
+输入字段中求值。如果它求值到 true 命令块，则将继续执行直到到达 end
+命令。</p>
+<p>​ 完成后，测试将跳回到 while 命令并重复相同的顺序(首先检查条件是否变为
+true 或 false)。</p>
+<p>​ 要关闭 while 命令块，请使用 end 命令。</p>
+<div class="figure align-default">
+<img alt="_images/图片4.png" src="_images/图片4.png" />
+</div>
+<p>​ 循环将重试，直到条件返回 false 或无限循环保护被触发为止(默认为 1000
+尝试)。 您可以通过 value 在 while
+命令的输入字段中指定一个数字来覆盖此默认值。</p>
+</div>
+<div class="section" id="foreach">
+<h4>3.4.4 forEach<a class="headerlink" href="#foreach" title="Permalink to this headline">¶</a></h4>
+<p>​ 尽力做到最好，我们有能力遍历一个集合(例如，一个 JS
+数组)，并在我们执行该过 程时引用该集合中的每个项目。</p>
+<p>​ 在该 target 字段中，指定包含要迭代的数组的变量的名称。在该 value
+字段中，指定要
+使用的迭代器变量的名称。对于数组中的每个条目，将执行以下命令。在每次迭代期间，将
+通过迭代器变量访问当前条目的内容。</p>
+<div class="figure align-default">
+<img alt="_images/图片5.png" src="_images/图片5.png" />
+</div>
+</div>
+</div>
+<div class="section" id="id46">
+<h3>3.5 嵌套命令<a class="headerlink" href="#id46" title="Permalink to this headline">¶</a></h3>
+<p>​ 您可以根据需要嵌套控制流命令(例如，一个 if 块可以放在一个 while
+块内部，反之亦然)。</p>
+<div class="figure align-default">
+<img alt="_images/图片6.png" src="_images/图片6.png" />
+</div>
+</div>
+<div class="section" id="id47">
+<h3>3.6 语法验证<a class="headerlink" href="#id47" title="Permalink to this headline">¶</a></h3>
+<p>​ 如果不确定控制流语法是否正确，请尝试运行测试以查看。Selenium IDE
+将发现控制 流语法中的错误，并调出不正确或丢失的特定命令。</p>
+<div class="figure align-default">
+<img alt="_images/图片7.png" src="_images/图片7.png" />
+</div>
+</div>
+</div>
+<div class="section" id="id48">
+<h2>四、代码导出<a class="headerlink" href="#id48" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id49">
+<h3>4.1 入门<a class="headerlink" href="#id49" title="Permalink to this headline">¶</a></h3>
+<p>​ 您可以通过右键单击测试用例或测试用例集，选择
+Export，选择目标语言，然后单击，将测试(test) 用例或测试用例集(test
+suite)导出为 WebDriver 代码。</p>
+<div class="figure align-default">
+<img alt="_images/图片8.png" src="_images/图片8.png" />
+</div>
+<p>​ 这会将包含导出的目标语言代码的文件保存到浏览器的下载目录中。</p>
+</div>
+<div class="section" id="id50">
+<h3>4.2 源代码跟踪注释<a class="headerlink" href="#id50" title="Permalink to this headline">¶</a></h3>
+<p>​ 导出时，有一个可选的切换开关用来启用源代码跟踪注释。</p>
+<p>​ 这将在导出的文件中放置内联代码注释，其中包含生成它的 Selenium IDE
+中的测试步 骤的详细信息。</p>
+</div>
+<div class="section" id="id51">
+<h3>4.3 支持的导出<a class="headerlink" href="#id51" title="Permalink to this headline">¶</a></h3>
+<p>​ 当前，支持导出到以下语言和测试框架。</p>
+<ul class="simple">
+<li><p>C#NUnit</p></li>
+<li><p>Java JUnit</p></li>
+<li><p>Javascript Mocha</p></li>
+<li><p>Python pytest</p></li>
+</ul>
+<p>​ 我们打算在每种语言的至少一个测试框架中支持所有官方支持的 Selenium
+编程语言绑 定(例如 Java，JavaScript，C#，Python 和 Ruby)。</p>
+<p>​
+欢迎提供帮助以添加特定语言的新语言和测试框架。有关<a class="reference external" href="https://www.selenium.dev/selenium-ide/docs/en/introduction/code-export">如何操作</a>的详细信息，请参见<a class="reference external" href="https://www.selenium.dev/selenium-ide/docs/en/introduction/code-export">如何贡献</a>。</p>
+<div class="section" id="c-nunit">
+<h4>4.3.1 C#NUnit<a class="headerlink" href="#c-nunit" title="Permalink to this headline">¶</a></h4>
+<p>​ C#NUnit 的导出代码被构建为与.NET Core，NUnit 3.11 和最新版本的
+Selenium 一起 使用。</p>
+<p>​ 要创建一个与 NUnit 一起使用的新样板项目，请使用以下 dotnet new 命令。</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">dotnet</span> <span class="n">new</span> <span class="n">nunit</span> <span class="o">-</span><span class="n">n</span> <span class="n">NUnit</span><span class="o">-</span><span class="n">Tests</span> <span class="o">--</span><span class="n">framework</span> <span class="n">netcoreapp2</span><span class="o">.</span><span class="mi">0</span>
+</pre></div>
+</div>
+<p>​ 使用以下.csproj 文件，您可以使用以下 dotnet restore
+命令安装正确的软件包和版本。</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>&lt;!-- filename: example.csproj --&gt;
+&lt;Project Sdk=&quot;Microsoft.NET.Sdk&quot;&gt;
+
+  &lt;PropertyGroup&gt;
+    &lt;TargetFramework&gt;netcoreapp2.0&lt;/TargetFramework&gt;
+
+    &lt;IsPackable&gt;false&lt;/IsPackable&gt;
+  &lt;/PropertyGroup&gt;
+
+  &lt;ItemGroup&gt;
+    &lt;PackageReference Include=&quot;nunit&quot; Version=&quot;3.11.0&quot; /&gt;
+    &lt;PackageReference Include=&quot;NUnit3TestAdapter&quot; Version=&quot;3.13.0&quot; /&gt;
+    &lt;PackageReference Include=&quot;Microsoft.NET.Test.Sdk&quot; Version=&quot;16.0.1&quot; /&gt;
+    &lt;PackageReference Include=&quot;Selenium.Support&quot; Version=&quot;4.0.0-alpha03&quot; /&gt;
+    &lt;PackageReference Include=&quot;Selenium.WebDriver&quot; Version=&quot;4.0.0-alpha03&quot; /&gt;
+  &lt;/ItemGroup&gt;
+
+&lt;/Project&gt;
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;</span> <span class="n">dotnet</span> <span class="n">restore</span> <span class="n">example</span><span class="o">.</span><span class="n">csproj</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="c-xunit">
+<h4>4.3.2 C#xUnit<a class="headerlink" href="#c-xunit" title="Permalink to this headline">¶</a></h4>
+<p>​ C#xUnit 的导出代码被构建为可与 C#，xUnit 和最新版本的 Selenium
+一起使用。</p>
+<p>​ 就像 C#Nunit 一样，您可以使用 dotnet
+工具安装它，并在安装这些依赖项之后运行它 (例如，使用 Install-Package
+Selenium.WebDriveror 或 dotnet add package Selenium.WebDriver)。</p>
+<p>​ 要创建一个与 xUnit 一起使用的新样板项目，请使用以下 dotnet new 命令。</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;</span> <span class="n">dotnet</span> <span class="n">new</span> <span class="n">xUnittests</span>
+</pre></div>
+</div>
+<p>​ 使用以下.csproj 文件，您可以使用以下 dotnet restore
+命令安装正确的软件包和版本。</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>&lt;!-- filename: example.csproj --&gt;
+&lt;Project Sdk=&quot;Microsoft.NET.Sdk&quot;&gt;
+
+  &lt;PropertyGroup&gt;
+    &lt;TargetFramework&gt;netcoreapp2.0&lt;/TargetFramework&gt;
+
+    &lt;IsPackable&gt;false&lt;/IsPackable&gt;
+  &lt;/PropertyGroup&gt;
+
+  &lt;ItemGroup&gt;
+    &lt;PackageReference Include=&quot;xunit&quot; Version=&quot;2.4.1&quot; /&gt;
+    &lt;PackageReference Include=&quot;Microsoft.NET.Test.Sdk&quot; Version=&quot;16.0.1&quot; /&gt;
+    &lt;PackageReference Include=&quot;Selenium.Support&quot; Version=&quot;4.0.0-alpha03&quot; /&gt;
+    &lt;PackageReference Include=&quot;Selenium.WebDriver&quot; Version=&quot;4.0.0-alpha03&quot; /&gt;
+  &lt;/ItemGroup&gt;
+
+&lt;/Project&gt;
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;</span> <span class="n">dotnet</span> <span class="n">restore</span> <span class="n">example</span><span class="o">.</span><span class="n">csproj</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="java-junit">
+<h4>4.3.3 Java JUnit<a class="headerlink" href="#java-junit" title="Permalink to this headline">¶</a></h4>
+<p>​ Java JUnit 的导出代码可与 Java 8，JUnit 4.12 和最新版本的 Selenium
+一起使用。</p>
+<p>​ 您应该能够将导出的 Java 文件放入带有 pom.xml
+列出这些依赖关系的文件的标准Maven 目录结构中并运行它。</p>
+<p>​ 这是一个示例 pom.xml，可帮助您入门。</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">project</span><span class="o">&gt;</span>
+  <span class="o">&lt;</span><span class="n">modelVersion</span><span class="o">&gt;</span><span class="mf">4.0</span><span class="o">.</span><span class="mi">0</span><span class="o">&lt;/</span><span class="n">modelVersion</span><span class="o">&gt;</span>
+  <span class="o">&lt;</span><span class="n">groupId</span><span class="o">&gt;</span><span class="n">org</span><span class="o">.</span><span class="n">seleniumhq</span><span class="o">.</span><span class="n">selenium</span><span class="o">&lt;/</span><span class="n">groupId</span><span class="o">&gt;</span>
+  <span class="o">&lt;</span><span class="n">artifactId</span><span class="o">&gt;</span><span class="n">selenium</span><span class="o">-</span><span class="n">ide</span><span class="o">-</span><span class="n">java</span><span class="o">-</span><span class="n">code</span><span class="o">-</span><span class="n">export</span><span class="o">&lt;/</span><span class="n">artifactId</span><span class="o">&gt;</span>
+  <span class="o">&lt;</span><span class="n">version</span><span class="o">&gt;</span><span class="mi">1</span><span class="o">&lt;/</span><span class="n">version</span><span class="o">&gt;</span>
+  <span class="o">&lt;</span><span class="n">url</span><span class="o">&gt;</span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">maven</span><span class="o">.</span><span class="n">apache</span><span class="o">.</span><span class="n">org</span><span class="o">&lt;/</span><span class="n">url</span><span class="o">&gt;</span>
+  <span class="o">&lt;</span><span class="n">dependencies</span><span class="o">&gt;</span>
+    <span class="o">&lt;</span><span class="n">dependency</span><span class="o">&gt;</span>
+      <span class="o">&lt;</span><span class="n">groupId</span><span class="o">&gt;</span><span class="n">junit</span><span class="o">&lt;/</span><span class="n">groupId</span><span class="o">&gt;</span>
+      <span class="o">&lt;</span><span class="n">artifactId</span><span class="o">&gt;</span><span class="n">junit</span><span class="o">&lt;/</span><span class="n">artifactId</span><span class="o">&gt;</span>
+      <span class="o">&lt;</span><span class="n">version</span><span class="o">&gt;</span><span class="mf">4.12</span><span class="o">&lt;/</span><span class="n">version</span><span class="o">&gt;</span>
+      <span class="o">&lt;</span><span class="n">scope</span><span class="o">&gt;</span><span class="n">test</span><span class="o">&lt;/</span><span class="n">scope</span><span class="o">&gt;</span>
+    <span class="o">&lt;/</span><span class="n">dependency</span><span class="o">&gt;</span>
+    <span class="o">&lt;</span><span class="n">dependency</span><span class="o">&gt;</span>
+      <span class="o">&lt;</span><span class="n">groupId</span><span class="o">&gt;</span><span class="n">org</span><span class="o">.</span><span class="n">seleniumhq</span><span class="o">.</span><span class="n">selenium</span><span class="o">&lt;/</span><span class="n">groupId</span><span class="o">&gt;</span>
+      <span class="o">&lt;</span><span class="n">artifactId</span><span class="o">&gt;</span><span class="n">selenium</span><span class="o">-</span><span class="n">java</span><span class="o">&lt;/</span><span class="n">artifactId</span><span class="o">&gt;</span>
+      <span class="o">&lt;</span><span class="n">version</span><span class="o">&gt;</span><span class="mf">4.0</span><span class="o">.</span><span class="mi">0</span><span class="o">-</span><span class="n">alpha</span><span class="o">-</span><span class="mi">3</span><span class="o">&lt;/</span><span class="n">version</span><span class="o">&gt;</span>
+    <span class="o">&lt;/</span><span class="n">dependency</span><span class="o">&gt;</span>
+  <span class="o">&lt;/</span><span class="n">dependencies</span><span class="o">&gt;</span>
+<span class="o">&lt;/</span><span class="n">project</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="javascript-mocha">
+<h4>4.3.4 Javascript Mocha<a class="headerlink" href="#javascript-mocha" title="Permalink to this headline">¶</a></h4>
+<p>​ JavaScript Mocha 的导出代码被构建为与 Node 10，Mocha 6.1.x
+和最新版本的Selenium 一起使用。</p>
+<p>​ 安装这些依赖项(例如，使用 npm install)后，您应该能够获取导出的
+JavaScript 文件并运行它。</p>
+<p>​ 这是一个示例 package.json，可帮助您入门。</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="s2">&quot;dependencies&quot;</span><span class="p">:</span> <span class="p">{</span>
+<span class="s2">&quot;mocha&quot;</span><span class="p">:</span> <span class="s2">&quot;^6.1.4&quot;</span><span class="p">,</span> <span class="s2">&quot;selenium-webdriver&quot;</span><span class="p">:</span> <span class="s2">&quot;^4.0.0-alpha.3&quot;</span> <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="python-pytest">
+<h4>4.3.5 Python pytest<a class="headerlink" href="#python-pytest" title="Permalink to this headline">¶</a></h4>
+<p>​ Python pytest 的导出代码可与 Python 3，pytest 4.6.x 和最新版本的
+Selenium 一起使用。</p>
+<p>​ 安装这些依赖项(例如，使用 pip3 install)后，您应该能够获取导出的
+JavaScript 文 件并运行它。</p>
+<p>​ 这是一个示例 requirements.txt，可帮助您入门。</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Pytest</span> <span class="o">==</span> <span class="mf">4.6</span><span class="o">.</span><span class="mi">3</span>
+<span class="n">Selenium</span> <span class="o">==</span> <span class="mf">4.0</span><span class="o">.</span><span class="mi">0</span><span class="n">a1</span>
+<span class="o">&gt;</span> <span class="n">pip3</span> <span class="n">install</span> <span class="o">-</span><span class="n">r</span> <span class="o">./</span><span class="n">requirements</span><span class="o">.</span><span class="n">txt</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="ruby-rspec">
+<h4>4.3.6 Ruby RSpec<a class="headerlink" href="#ruby-rspec" title="Permalink to this headline">¶</a></h4>
+<p>​ Ruby Rspec 的导出代码可与 Ruby 2.6.x，RSpec 3.9.x 和最新版本的
+Selenium 一起 使用。</p>
+<p>​ 通过使用 Bundler 和以下工具，Gemfile 您可以安装必要的依赖项。</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Gemfile</span>
+<span class="n">Source</span> <span class="s1">&#39;https://rubygems.org&#39;</span>
+<span class="n">gem</span><span class="s1">&#39;selenium-webdriver&#39;</span>
+<span class="n">gem</span><span class="s1">&#39;rspec&#39;</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;</span> <span class="n">gem</span> <span class="n">install</span> <span class="n">bunder</span>
+<span class="o">&gt;</span> <span class="n">bunder</span> <span class="n">install</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="id52">
+<h3>4.4 如何贡献<a class="headerlink" href="#id52" title="Permalink to this headline">¶</a></h3>
+<p>​ 代码导出以模块化方式构建，以帮助实现贡献。</p>
+<p>​ 每种语言和测试框架都有自己的包含要导出代码的包。每个代码段都映射到
+Selenium IDE
+中的命令，并且每个程序包都依赖于底层的“核心”程序包，该程序包承担了所有繁重的
+工作。</p>
+<p>​
+以下是在一种已经建立的语言中为一种新语言或一种新的测试框架创建代码的步骤。</p>
+</div>
+<div class="section" id="id53">
+<h3>4.4.1 创建一个新包<a class="headerlink" href="#id53" title="Permalink to this headline">¶</a></h3>
+<p>​ 首先，复制一个现有的语言包(例如
+packages/code-export-java-junit)，然后将其重
+命名(例如，文件夹和文件中的详细信息
+package.json)为您想要贡献的目标语言和框架 (例如
+packages/code-export-ruby-rspec,等等)。</p>
+<p>​ 接下来，添加新的软件包作为依赖于该 package.json 在 code-export。</p>
+<p>​ 最后，yarn 从项目的根目录运行，然后使用构建项目 yarn
+watch(此处提供了进行本地构建的完整详细信息)。</p>
+<div class="section" id="id54">
+<h4>4.4.2 更新定位器和命令<a class="headerlink" href="#id54" title="Permalink to this headline">¶</a></h4>
+<p>​
+代码导出的基础是特定于语言的字符串，这些字符串将转换为输出的代码。其中最突出的是命令和定位器策略(例如，“
+by”查找的语法)。</p>
+<p>​ 对于给定的语言，每种语言都有一个文件，以及随附的测试文件。</p>
+<p>​ 您可以在 packages/code-export-java-junit 中看到一个示例。</p>
+<ul class="simple">
+<li><p>指令</p></li>
+<li><p>命令测试</p></li>
+<li><p>定位器策略</p></li>
+<li><p>定位器策略测试</p></li>
+</ul>
+<p>​
+声明新命令时，可以将其输出指定为<a class="reference external" href="https://github.com/SeleniumHQ/selenium-ide/blob/v3/packages/code-export-java-junit/src/command.js">字符串</a>，也可以指定为<a class="reference external" href="https://github.com/SeleniumHQ/selenium-ide/blob/v3/packages/code-export-java-junit/src/command.js">指定缩进级别的对象</a>。</p>
+<p>​
+内置在代码导出中的是一个优化控件，用于控制输出代码的缩进。如果命令的输出的很
+详细，并且您希望明确显示，则此结构很有用。或者，如果命令更改了紧随其后的命令的缩
+进级别。</p>
+</div>
+<div class="section" id="id55">
+<h4>4.4.3 创建钩子<a class="headerlink" href="#id55" title="Permalink to this headline">¶</a></h4>
+<p>​
+钩子构成了要导出的代码的大部分结构(例如，套件，测试以及其中包含的所有内容，
+例如设置，拆卸等)。它们还使插件能够将代码导出到测试用例或测试用例集的不同部分。</p>
+<p>​ 有 9 种不同的钩子:</p>
+<ul class="simple">
+<li><p>afterAll (所有测试完以后)</p></li>
+<li><p>afterEach (完成每个测试后-在 afterAll 之前 )</p></li>
+<li><p>beforeAll (在运行所有测试之前)</p></li>
+<li><p>beforeEach(在运行每个测试之前-在 beforeAll 之后)</p></li>
+<li><p>command (为插件添加的新命令发送代码)</p></li>
+<li><p>dependency (添加其他语言依赖性)</p></li>
+<li><p>inEachBegin (在每个测试的开始阶段)</p></li>
+<li><p>inEachEnd (在每个测试的末尾)</p></li>
+<li><p>variable (声明将在整个测试用例集中使用的新变量)</p></li>
+</ul>
+<p>​ 您可以在
+<a class="reference external" href="https://github.com/SeleniumHQ/selenium-ide/blob/v3/packages/code-export-java-junit/src/hook.js">packages/code-export-java-junit</a>
+处看到实现钩子的示例。</p>
+</div>
+<div class="section" id="id56">
+<h4>4.4.4 更新语言特定的属性<a class="headerlink" href="#id56" title="Permalink to this headline">¶</a></h4>
+<p>​
+在每种语言中，您都需要指定一些底层细节。比如缩进多少空格，如何声明方法、测试
+用例、测试用例集等。</p>
+<p>​
+您可以在<a class="reference external" href="https://github.com/SeleniumHQ/selenium-ide/blob/v3/packages/code-export-java-junit/src/index.js">packages/code-export-java-junit</a>处查看如何实现此示例。</p>
+</div>
+<div class="section" id="id57">
+<h4>4.4.5 将其添加到程序包中<a class="headerlink" href="#id57" title="Permalink to this headline">¶</a></h4>
+<p>​ 将其他所有内容准备就绪后，就可以将其连接起来以在 UI 中使用了。</p>
+<p>​ 代码可能在 packages/code-export/src/index.js 路径下。</p>
+<p>​ 您需要将代码语言添加到中 availableLanguages 中。</p>
+</div>
+<div class="section" id="id58">
+<h4>4.4.6 测试和调整<a class="headerlink" href="#id58" title="Permalink to this headline">¶</a></h4>
+<p>​
+导出代码的最佳端到端测试是导出一系列测试用例，并验证它们是否按预期运行。</p>
+<p>​
+从开发版本中，您可以访问种子测试用例。这是验证所有标准库命令是否都适用于您的
+新语言的一个良好起点。</p>
+<p>​ 再次测试，修复和测试，直到您对最终结果充满信心。</p>
+</div>
+<div class="section" id="pr">
+<h4>4.4.7 提交 PR<a class="headerlink" href="#pr" title="Permalink to this headline">¶</a></h4>
+<p>​ 您已经完成了最困难的部分。现在只要提交一个 PR
+就行了。请针对<a class="reference external" href="https://github.com/SeleniumHQ/selenium-ide/tree/v3">v3分支</a>提交。</p>
+</div>
+</div>
+</div>
+<div class="section" id="id59">
+<h2>五、常见问题解答<a class="headerlink" href="#id59" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id60">
+<h3>5.1 如何记录悬停?<a class="headerlink" href="#id60" title="Permalink to this headline">¶</a></h3>
+<p>​ 鼠标悬停(又称悬停)操作很难作为记录周期的一部分自动捕获。</p>
+<p>​
+要在您的测试中添加鼠标悬停，需要进行一些手动干预。您可以通过两种不同的方式来
+做到这一点。</p>
+<ul>
+<li><p>选项1:在录制时添加</p>
+<p>步骤一：录制时，右键单击要悬停的元素；</p>
+<p>步骤二：在出现的菜单中，单击Selenium IDE，然后点击Mouse Over；</p>
+<p>步骤三：确认 Mouse Over
+测试步骤在测试中的正确位置(如果需要，将其拖放到其他位置)。</p>
+</li>
+<li><p>选项2:在测试编辑器中手动添加</p>
+<p>步骤一：右键单击 IDE 中的测试步骤;</p>
+<p>步骤二：选择 Insert new command;</p>
+<p>步骤三：在 Command 输入字段中键入 mouse over;</p>
+<p>步骤四：在 Target 输入字段中输入要悬停的定位器(或单击 Select target
+in page并选择要悬停的元素)。</p>
+</li>
+</ul>
+</div>
+<div class="section" id="id61">
+<h3>5.2 为什么在日期输入字段中键入的数字不能正确显示?<a class="headerlink" href="#id61" title="Permalink to this headline">¶</a></h3>
+<p>​ 通过 Selenium IDE 的命令行运行器运行测试时，会出现此问题。</p>
+<p>​ 要绕开它，您将需要启用 w3c 模式，您可以通过-c
+“chromeOptions.w3c=true”在启动 运行程序时传递来进行此操作。</p>
+<p>​ 启用 w3c 模式会影响 Selenium Actions
+的性能(如果您的测试最终使用它们)是毫无
+价值的，因此仅当日期输入字段存在问题时才使用此模式。</p>
+</div>
+<div class="section" id="id62">
+<h3>5.3 如何让 Selenium IDE 等待特定条件成立才能继续进行?<a class="headerlink" href="#id62" title="Permalink to this headline">¶</a></h3>
+<p>​ 在某些情况下，Selenium IDE
+中的内置等待策略还不够。发生这种情况时，可以使用
+可用的显式等待命令之一。</p>
+<ul class="simple">
+<li><p>wait for element editable</p></li>
+<li><p>wait for element present</p></li>
+<li><p>wait for element visible</p></li>
+<li><p>wait for element not editable</p></li>
+<li><p>wait for element not present</p></li>
+<li><p>wait for element not visible</p></li>
+</ul>
+</div>
+<div class="section" id="id63">
+<h3>5.4 如何在文本验证中使用正则表达式?<a class="headerlink" href="#id63" title="Permalink to this headline">¶</a></h3>
+<p>​ 这是我们最终将要添加的功能(有关详细信息，请参阅<a class="reference external" href="https://github.com/SeleniumHQ/selenium-ide/issues/141">问题
+141</a>)。解决方法是，可以
+将 XPath 定位器与 starts-with 和 contains 关键字一起使用。</p>
+</div>
+<div class="section" id="id64">
+<h3>5.5 如何滚动?<a class="headerlink" href="#id64" title="Permalink to this headline">¶</a></h3>
+<p>​ Selenium IDE 中没有用于滚动的独特命令，因为 Selenium
+中没有实现任何命令。相反，您可以使用 scrollToJavaScript 中的命令通过指定
+x 和 y 滚动到所需坐标来完成此任务。</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 34%" />
+<col style="width: 57%" />
+<col style="width: 9%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>命令</p></th>
+<th class="head"><p>目标</p></th>
+<th class="head"><p>值</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>executeScript</p></td>
+<td><p>window.scrollTo(0,1000)</p></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="id65">
+<h3>5.6 保存文件<a class="headerlink" href="#id65" title="Permalink to this headline">¶</a></h3>
+<p>​ 为什么我保存 SIDE 项目的位置不记得了?</p>
+<p>​ 为什么每次要保存项目时都需要逐步执行“另存为”流程?</p>
+<p>​ 为什么需要覆盖以前保存的文件?</p>
+<p>​ 所有这些问题都是同一个问题的一部分——因为浏览器扩展 Selenium IDE
+不能访问文件系统。提供“保存”功能的唯一方法是下载文件。这个问题将在 IDE
+迁移到本地应用程 序时得到解决。这将使 IDE
+具有首要的文件系统访问权限，这将使它能够提供完善的“保存”体验。</p>
+<p>​ 如果要保持更新，可以按照<a class="reference external" href="https://github.com/SeleniumHQ/selenium-ide/issues/363">问题
+363</a>
+进行操作。</p>
+</div>
+<div class="section" id="ide">
+<h3>5.7 如何在严格的代理/防火墙后面安装 IDE?<a class="headerlink" href="#ide" title="Permalink to this headline">¶</a></h3>
+<p>​ 在某些情况下，您可能没有完全的公共 Internet
+访问权限(例如，在“公司代理或防火
+墙”后面)。在这些环境中，您将需要获取内置的 Selenium IDE ZIP
+文件的副本，以便记录 自动测试脚本。可以在 GitHub 的“发布”部分中找到:</p>
+<p>​ <a class="reference external" href="https://github.com/SeleniumHQ/selenium-ide/releases">https://github.com/SeleniumHQ/selenium-ide/releases</a></p>
+<p>​ 并非所有版本都包含“
+selenium-ide.zip”，因为其中一些仅仅是“源代码”版本。查找具 有此 zip
+文件的最新版本。这意味着它是提交给 Chrome 和 Firefox 商店的最新版本。</p>
+<div class="section" id="id66">
+<h4>5.7.1 正式签署的版本<a class="headerlink" href="#id66" title="Permalink to this headline">¶</a></h4>
+<p>​ 从项目发行页面下载 zip 文件可为您提供未签名的 ZIP
+文件。或者，您可以从以下位置</p>
+<p>​
+获取经过正式签名的安装程序，这些安装程序可以在“安全环境”中更好地发挥作用:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://addons.mozilla.org/en-US/firefox/addon/selenium-ide/">Firefox附加组件</a></p></li>
+<li><p><a class="reference external" href="https://superuser.com/questions/646856/how-to-save-firefox-addons-for-offline-installation">所需的“.crx”安装程序的下载说明</a></p></li>
+</ul>
+<p>​
+注意:如果您已经安装了插件(例如，在便携式计算机上尝试获取安装程序的副本)，
+则在尝试访问它们时只会看到“删除”按钮。因此，将它们删除一次，让安装程序移至另一台
+未连接的计算机，然后根据需要在主设备的浏览器中重新安装。</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://chrome.google.com/webstore/detail/selenium-ide/mooikfkahbdckldjjndioackbalphokd">Chrome商店</a></p></li>
+<li><p><a class="reference external" href="https://stackoverflow.com/questions/25480912/how-to-download-a-chrome-extension-without-installing-it">所需的“.crx“安装程序的下载说明</a></p></li>
+</ul>
+<p>​ 注意:您不能直接从 Chrome 商店中获取“
+.crx”文件。相反，您需要在本地安装一次，
+然后转到计算机上的安装目录以进行检索。</p>
+</div>
+</div>
+<div class="section" id="id67">
+<h3>5.8 为什么附加插件后没有出现保存对话框?<a class="headerlink" href="#id67" title="Permalink to this headline">¶</a></h3>
+<p>​ 由于当前的 Chrome 错误，如果您不对 Selenium IDE
+发出的消息做出响应，则不会进 行进一步处理。为了解决此问题，请确保侦听
+emit 该实体的操作 project 并使用进行回复 undefined:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">chrome</span><span class="o">.</span><span class="n">runtime</span><span class="o">.</span><span class="n">onMessageExternal</span><span class="o">.</span><span class="n">addListener</span><span class="p">((</span><span class="n">message</span><span class="p">,</span> <span class="n">sender</span><span class="p">,</span> <span class="n">sendResponse</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+<span class="k">if</span> <span class="p">(</span><span class="n">message</span><span class="o">.</span><span class="n">action</span> <span class="o">===</span> <span class="s2">&quot;emit&quot;</span> <span class="o">&amp;&amp;</span> <span class="n">message</span><span class="o">.</span><span class="n">entity</span> <span class="o">===</span> <span class="s2">&quot;project&quot;</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">sendResponse</span><span class="p">(</span><span class="n">undefined</span><span class="p">);</span>
+    <span class="p">}</span>
+    <span class="p">});</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="id68">
+<h2>六、命令<a class="headerlink" href="#id68" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="add-selection">
+<h3>add selection<a class="headerlink" href="#add-selection" title="Permalink to this headline">¶</a></h3>
+<p>​ 在多选元素的选项集中添加一个选项。</p>
+<p>参数：</p>
+<ul class="simple">
+<li><p>locator：元素定位器</p></li>
+<li><p>value：要输入的值</p></li>
+</ul>
+</div>
+<div class="section" id="answer-on-next-prompt">
+<h3>answer on next prompt<a class="headerlink" href="#answer-on-next-prompt" title="Permalink to this headline">¶</a></h3>
+<p>​ 影响下一个 alert 弹出框。此命令将向其发送指定的答案字符串。如果 alert
+弹出框已 存在，请改用“webdriver answer on visible prompt”替代。</p>
+<p>参数：</p>
+<ul class="simple">
+<li><p>answer: 给出响应提示弹出的答案。</p></li>
+</ul>
+</div>
+<div class="section" id="assert">
+<h3>assert<a class="headerlink" href="#assert" title="Permalink to this headline">¶</a></h3>
+<p>​
+检查变量是否为期望值。变量的值将转换为字符串以进行比较。如果断言失败，则测试
+将停止。</p>
+<p>参数：</p>
+<ul class="simple">
+<li><p>variable name :不带括号的变量名</p></li>
+<li><p>expected value :您期望变量包含的结果(例如，true，false 或某个其他值)</p></li>
+</ul>
+</div>
+<div class="section" id="assert-alert">
+<h3>assert alert<a class="headerlink" href="#assert-alert" title="Permalink to this headline">¶</a></h3>
+<p>​ 确认 alert 弹出框已呈现提供的文本。如果断言失败，则测试将停止。</p>
+<p>参数：</p>
+<ul class="simple">
+<li><p>alert text : 要检查的文字。</p></li>
+</ul>
+</div>
+<div class="section" id="assert-checked">
+<h3>assert checked<a class="headerlink" href="#assert-checked" title="Permalink to this headline">¶</a></h3>
+<p>​ 确认目标元素已被检查。如果断言失败，则测试将停止。</p>
+<p>参数：</p>
+<ul class="simple">
+<li><p>locator:元素定位器</p></li>
+</ul>
+</div>
+<div class="section" id="assert-confirmation">
+<h3>assert confirmation<a class="headerlink" href="#assert-confirmation" title="Permalink to this headline">¶</a></h3>
+<p>​ 确认已提交确定信息。如果断言失败，则测试将停止。</p>
+<p>参数：</p>
+<ul class="simple">
+<li><p>text:要使用的文本。</p></li>
+</ul>
+</div>
+<div class="section" id="assert-editable">
+<h3>assert editable<a class="headerlink" href="#assert-editable" title="Permalink to this headline">¶</a></h3>
+<p>​ 确认目标元素是可编辑的。如果断言失败，则测试将停止。</p>
+<p>参数：</p>
+<ul class="simple">
+<li><p>locator:元素定位器。</p></li>
+</ul>
+</div>
+<div class="section" id="assert-element-not-present">
+<h3>assert element not present<a class="headerlink" href="#assert-element-not-present" title="Permalink to this headline">¶</a></h3>
+<p>​ 确认目标元素存在于页面上任何地方。如果断言失败，则测试将停止。</p>
+<p>参数：</p>
+<ul class="simple">
+<li><p>locator:元素定位器。</p></li>
+</ul>
+</div>
+<div class="section" id="assert-not-checked">
+<h3>assert not checked<a class="headerlink" href="#assert-not-checked" title="Permalink to this headline">¶</a></h3>
+<p>​ 确认尚未检查目标元素。如果断言失败，则测试将停止。</p>
+<p>参数：</p>
+<ul class="simple">
+<li><p>locator:元素定位器。</p></li>
+</ul>
+</div>
+<div class="section" id="assert-not-editable">
+<h3>assert not editable<a class="headerlink" href="#assert-not-editable" title="Permalink to this headline">¶</a></h3>
+<p>​ 确认目标元素不可编辑。如果断言失败，则测试将停止。</p>
+<p>参数：</p>
+<ul class="simple">
+<li><p>locator:元素定位器。</p></li>
+</ul>
+</div>
+<div class="section" id="assert-not-selected-value">
+<h3>assert not selected value<a class="headerlink" href="#assert-not-selected-value" title="Permalink to this headline">¶</a></h3>
+<p>​ 确认下拉元素中所选选项的 value
+属性不包含提供的值。如果断言失败，则测试将停止。</p>
+<p>参数：</p>
+<ul>
+<li><p>select locator :标识下拉菜单的元素定位器</p></li>
+<li><p>text:完全匹配的字符串。正在支持模式匹配。有关详细信息，请参见</p>
+<p><a class="reference external" href="https://github.com/SeleniumHQ/selenium-ide/issues/141">https://github.com/SeleniumHQ/selenium-ide/issues/141</a></p>
+</li>
+</ul>
+</div>
+<div class="section" id="assert-prompt">
+<h3>assert prompt<a class="headerlink" href="#assert-prompt" title="Permalink to this headline">¶</a></h3>
+<p>​ 确认已呈现 JavaScript 提示。如果断言失败，则测试将停止。</p>
+<p>参数：</p>
+<ul class="simple">
+<li><p>text:要使用的文本。</p></li>
+</ul>
+</div>
+<div class="section" id="assert-selected-value">
+<h3>assert selected value<a class="headerlink" href="#assert-selected-value" title="Permalink to this headline">¶</a></h3>
+<p>​ 确认下拉元素中所选选项的 value
+属性包含提供的值。如果断言失败，则测试将停止。</p>
+<p>参数：</p>
+<ul>
+<li><p>select locator:标识下拉菜单的元素定位器。</p></li>
+<li><p>text: 完全匹配的字符串。正在支持模式匹配。有关详细信息，请参见</p>
+<p><a class="reference external" href="https://github.com/SeleniumHQ/selenium-ide/issues/141">https://github.com/SeleniumHQ/selenium-ide/issues/141</a>.</p>
+</li>
+</ul>
+</div>
+<div class="section" id="assert-selected-label">
+<h3>assert selected label<a class="headerlink" href="#assert-selected-label" title="Permalink to this headline">¶</a></h3>
+<p>​ 确认下拉菜单中所选选项的标签包含提供的值。如果断言失败，则测试将停止。</p>
+<p>参数：</p>
+<ul>
+<li><p>select locator:标识下拉菜单的元素定位器。</p></li>
+<li><p>text: 完全匹配的字符串。正在支持模式匹配。有关详细信息，请参见</p>
+<p><a class="reference external" href="https://github.com/SeleniumHQ/selenium-ide/issues/141">https://github.com/SeleniumHQ/selenium-ide/issues/141</a>.</p>
+</li>
+</ul>
+</div>
+<div class="section" id="assert-text">
+<h3>assert text<a class="headerlink" href="#assert-text" title="Permalink to this headline">¶</a></h3>
+<p>​ 确认元素的文本包含提供的值。如果断言失败，则测试将停止。</p>
+<p>参数：</p>
+<ul>
+<li><p>locator: 元素定位器。</p></li>
+<li><p>text:完全匹配的字符串。正在支持模式匹配。有关详细信息，请参见</p>
+<p><a class="reference external" href="https://github.com/SeleniumHQ/selenium-ide/issues/141">https://github.com/SeleniumHQ/selenium-ide/issues/141</a>.</p>
+</li>
+</ul>
+</div>
+<div class="section" id="assert-title">
+<h3>assert title<a class="headerlink" href="#assert-title" title="Permalink to this headline">¶</a></h3>
+<p>​ 确认当前页面的标题包含提供的文本。如果断言失败，则测试将停止。</p>
+<p>参数：</p>
+<ul>
+<li><p>text:完全匹配的字符串。正在支持模式匹配。有关详细信息，请参见</p>
+<p><a class="reference external" href="https://github.com/SeleniumHQ/selenium-ide/issues/141">https://github.com/SeleniumHQ/selenium-ide/issues/141</a>.</p>
+</li>
+</ul>
+</div>
+<div class="section" id="assert-value">
+<h3>assert value<a class="headerlink" href="#assert-value" title="Permalink to this headline">¶</a></h3>
+<p>​ 确认输入字段的(空白修饰)值(或其他带有 value
+参数的值)。对于复选框/单选元素，根据是否选中该元素，其值为“ on”或“
+off”。如果断言失败，则测试将停止。</p>
+<p>参数：</p>
+<ul>
+<li><p>locator: 元素定位器。</p></li>
+<li><p>text:完全匹配的字符串。正在支持模式匹配。有关详细信息，请参见</p>
+<p><a class="reference external" href="https://github.com/SeleniumHQ/selenium-ide/issues/141">https://github.com/SeleniumHQ/selenium-ide/issues/141</a>.</p>
+</li>
+</ul>
+</div>
+<div class="section" id="check">
+<h3>check<a class="headerlink" href="#check" title="Permalink to this headline">¶</a></h3>
+<p>​ 检查一个切换按钮(复选框/单选)</p>
+<p>参数：</p>
+<ul class="simple">
+<li><p>locator:元素定位器。</p></li>
+</ul>
+</div>
+<div class="section" id="choose-cancel-on-next-confirmation">
+<h3>choose cancel on next confirmation<a class="headerlink" href="#choose-cancel-on-next-confirmation" title="Permalink to this headline">¶</a></h3>
+<p>​ 影响下一个 conformation
+对话框。此命令将取消它。如果该对话框已经存在，则使用 “ webdriver
+选择在可见确认时取消”。</p>
+</div>
+<div class="section" id="choose-cancel-on-next-prompt">
+<h3>choose cancel on next prompt<a class="headerlink" href="#choose-cancel-on-next-prompt" title="Permalink to this headline">¶</a></h3>
+<p>​ 影响下一个 prompt
+对话框。此命令将取消它。如果该对话框已经存在，则使用“ webdriver
+在可见的提示下选择取消”。</p>
+</div>
+<div class="section" id="choose-ok-on-next-confirmation">
+<h3>choose ok on next confirmation<a class="headerlink" href="#choose-ok-on-next-confirmation" title="Permalink to this headline">¶</a></h3>
+<p>​ 影响下一个 conformation
+对话框。此命令将接受它。如果该对话框已经存在，请改用 “ Webdriver
+在可见确认中选择确定”。</p>
+</div>
+<div class="section" id="click">
+<h3>click<a class="headerlink" href="#click" title="Permalink to this headline">¶</a></h3>
+<p>​ 单击目标元素(例如，链接，按钮，复选框或单选按钮)。</p>
+<p>参数：</p>
+<ul class="simple">
+<li><p>locator:元素定位器。</p></li>
+</ul>
+</div>
+<div class="section" id="click-at">
+<h3>click at<a class="headerlink" href="#click-at" title="Permalink to this headline">¶</a></h3>
+<p>​
+单击目标元素(例如，链接，按钮，复选框或单选按钮)。坐标是相对于目标元素的(例如，0,0
+是元素的左上角)，并且主要用于检查在其上传递的效果，例如材料波纹效应。</p>
+<p>参数：</p>
+<ul class="simple">
+<li><p>locator:元素定位器。</p></li>
+<li><p>coord string:指定鼠标事件相对于从定位器找到的元素的 x，y
+位置(例如-10，20)。</p></li>
+</ul>
+</div>
+<div class="section" id="close">
+<h3>close<a class="headerlink" href="#close" title="Permalink to this headline">¶</a></h3>
+<p>​ 关闭当前窗口。无需关闭初始窗口，IDE
+会重新使用它;关闭它可能会导致测试性能下 降。</p>
+</div>
+<div class="section" id="debugger">
+<h3>debugger<a class="headerlink" href="#debugger" title="Permalink to this headline">¶</a></h3>
+<p>​ 中断执行并进入调试器</p>
+</div>
+<div class="section" id="do-1">
+<span id="id69"></span><h3>do<a class="headerlink" href="#do-1" title="Permalink to this headline">¶</a></h3>
+<p>​ 创建一个至少执行一次执行命令的循环。使用 repeat if 命令终止分支。</p>
+</div>
+<div class="section" id="double-click">
+<h3>double click<a class="headerlink" href="#double-click" title="Permalink to this headline">¶</a></h3>
+<p>​ 双击元素(例如，链接，按钮，复选框或单选按钮)。</p>
+<p>参数：</p>
+<ul class="simple">
+<li><p>locator:元素定位器。</p></li>
+</ul>
+</div>
+<div class="section" id="double-click-at">
+<h3>double click at<a class="headerlink" href="#double-click-at" title="Permalink to this headline">¶</a></h3>
+<p>​
+双击目标元素(例如，链接，按钮，复选框或单选按钮)。坐标是相对于目标元素的(例如，0,0
+是元素的左上角)，并且主要用于检查在其上传递的效果，例如材料波纹效应。</p>
+<p>参数：</p>
+<ul class="simple">
+<li><p>locator:元素定位器。</p></li>
+<li><p>coord string:指定鼠标事件相对于从定位器找到的元素的 x，y
+位置(例如-10，20)。</p></li>
+</ul>
+</div>
+<div class="section" id="drag-and-drop-to-object">
+<h3>drag and drop to object<a class="headerlink" href="#drag-and-drop-to-object" title="Permalink to this headline">¶</a></h3>
+<p>​ 拖动一个元素并将其拖放到另一个元素上。</p>
+<p>参数：</p>
+<ul class="simple">
+<li><p>locator of object to be dragged: 要拖动的元素的定位器。</p></li>
+<li><p>Locator of drag destination object:
+放置元素(其位置(例如，其中的最中心像素)将成为要拖动的对象的定位器)的点的定位器。</p></li>
+</ul>
+</div>
+<div class="section" id="echo">
+<h3>echo<a class="headerlink" href="#echo" title="Permalink to this headline">¶</a></h3>
+<p>​ 将指定的消息打印到 Selenese 表中的第三个表单元格中。对于调试很有用。</p>
+<p>参数：</p>
+<ul class="simple">
+<li><p>message:要打印的消息。</p></li>
+</ul>
+</div>
+<div class="section" id="edit-content">
+<h3>edit content<a class="headerlink" href="#edit-content" title="Permalink to this headline">¶</a></h3>
+<p>​ 设置内容可编辑元素的值，就像您在其中键入一样。</p>
+<p>参数：</p>
+<ul class="simple">
+<li><p>locator:元素定位器。</p></li>
+<li><p>value:要输入的值。</p></li>
+</ul>
+</div>
+<div class="section" id="else-1">
+<span id="id70"></span><h3>else<a class="headerlink" href="#else-1" title="Permalink to this headline">¶</a></h3>
+<p>​ if 块的一部分。如果不满足 if 和/或 else if
+条件，请在此分支中执行命令。使用 end 命 令终止分支。</p>
+</div>
+<div class="section" id="else-if-1">
+<span id="id71"></span><h3>else if<a class="headerlink" href="#else-if-1" title="Permalink to this headline">¶</a></h3>
+<p>​ if 块的一部分。如果不满足 if 条件，请在此分支中执行命令。使用 end
+命令终止分支。</p>
+<p>参数：</p>
+<ul class="simple">
+<li><p>conditional expression: JavaScript
+表达式，它返回布尔值以用于控制流命令。</p></li>
+</ul>
+</div>
+<div class="section" id="end-1">
+<span id="id72"></span><h3>end<a class="headerlink" href="#end-1" title="Permalink to this headline">¶</a></h3>
+<p>​ 为 if、while 和 times 终止控制流块。</p>
+</div>
+<div class="section" id="execute-script">
+<h3>execute script<a class="headerlink" href="#execute-script" title="Permalink to this headline">¶</a></h3>
+<p>​ 在当前选定的框架或窗口的上下文中执行一段
+JavaScript。脚本片段将作为匿名函数的主体执行。要存储返回值，请使用“
+return”关键字，并在值输入字段中提供一个变量名称。</p>
+<p>参数：</p>
+<ul class="simple">
+<li><p>script:要运行的 JavaScript 代码段。</p></li>
+<li><p>variable name:不带括号的变量名。</p></li>
+</ul>
+</div>
+<div class="section" id="execute-async-script">
+<h3>execute async script<a class="headerlink" href="#execute-async-script" title="Permalink to this headline">¶</a></h3>
+<p>​ 在当前选定的框架或窗口的上下文中执行 JavaScript
+的异步代码段。该脚本片段将作 为匿名函数的主体执行，并且必须返回
+Promise。如果您使用’return’关键字，则 Promise 结果将保存在变量中。</p>
+<p>参数：</p>
+<ul class="simple">
+<li><p>script:要运行的 JavaScript 代码段。</p></li>
+<li><p>variable name:不带括号的变量名。</p></li>
+</ul>
+</div>
+<div class="section" id="for-each">
+<h3>for each<a class="headerlink" href="#for-each" title="Permalink to this headline">¶</a></h3>
+<p>​ 创建一个循环，为给定集合中的每个项目执行执行命令。</p>
+<p>参数：</p>
+<ul class="simple">
+<li><p>array variable name:包含 JavaScript 数组的变量的名称。</p></li>
+<li><p>iterator variable
+name:在循环控制流命令中迭代集合时使用的变量名称(例如，每个变量)</p></li>
+</ul>
+</div>
+<div class="section" id="if-1">
+<span id="id73"></span><h3>if<a class="headerlink" href="#if-1" title="Permalink to this headline">¶</a></h3>
+<p>​ 在测试中创建一个条件分支。使用 end 命令终止分支。</p>
+<p>参数：</p>
+<ul class="simple">
+<li><p>conditional expression:JavaScript
+表达式，它返回布尔值以用于控制流命令。</p></li>
+</ul>
+</div>
+<div class="section" id="mouse-down">
+<h3>mouse down<a class="headerlink" href="#mouse-down" title="Permalink to this headline">¶</a></h3>
+<p>​ 模拟用户按下鼠标左键(尚未释放它)。</p>
+<p>参数：</p>
+<ul class="simple">
+<li><p>locator:元素定位器。</p></li>
+</ul>
+</div>
+<div class="section" id="mouse-move-at">
+<h3>mouse move at<a class="headerlink" href="#mouse-move-at" title="Permalink to this headline">¶</a></h3>
+<p>​ 模拟用户在指定元素上按下鼠标按钮(尚未释放它)。</p>
+<p>参数：</p>
+<ul class="simple">
+<li><p>locator:元素定位器。</p></li>
+<li><p>coord string:指定鼠标事件相对于从定位器找到的元素的 x，y
+位置(例如-10,20)。</p></li>
+</ul>
+</div>
+<div class="section" id="open">
+<h3>open<a class="headerlink" href="#open" title="Permalink to this headline">¶</a></h3>
+<p>​ 打开 URL，然后等待页面加载，然后继续。这既接受相对 URL，也接受绝对
+URL。</p>
+<p>参数：</p>
+<ul class="simple">
+<li><p>url:要打开的 URL(可以是相对的或绝对的)。</p></li>
+</ul>
+</div>
+<div class="section" id="pause">
+<h3>pause<a class="headerlink" href="#pause" title="Permalink to this headline">¶</a></h3>
+<p>​ 等待指定的时间。</p>
+<p>参数：</p>
+<ul class="simple">
+<li><p>wait time：等待时间（以毫秒为单位）。</p></li>
+</ul>
+</div>
+<div class="section" id="remove-selection">
+<h3>remove selection<a class="headerlink" href="#remove-selection" title="Permalink to this headline">¶</a></h3>
+<p>​ 使用选项定位器从多选元素中的一组选定选项中删除一个选择。</p>
+<p>参数：</p>
+<ul class="simple">
+<li><p>locator:元素定位器。</p></li>
+<li><p>option:一个选项定位器，通常只是一个选项标签(例如“ John Smith”)。</p></li>
+</ul>
+</div>
+<div class="section" id="repeat-if">
+<h3>repeat if<a class="headerlink" href="#repeat-if" title="Permalink to this headline">¶</a></h3>
+<p>​ 有条件地终止“执行”控制流分支。如果提供的条件表达式的结果为
+true，则它将开始 do 循环。否则，它将结束循环。</p>
+<p>参数：</p>
+<ul class="simple">
+<li><p>conditional expression:JavaScript
+表达式，它返回布尔值以用于控制流命令。</p></li>
+</ul>
+</div>
+<div class="section" id="run">
+<h3>run<a class="headerlink" href="#run" title="Permalink to this headline">¶</a></h3>
+<p>​ 从当前项目运行测试用例。</p>
+<p>参数：</p>
+<ul class="simple">
+<li><p>test case:项目中的测试用例名称。</p></li>
+</ul>
+</div>
+<div class="section" id="run-script">
+<h3>run script<a class="headerlink" href="#run-script" title="Permalink to this headline">¶</a></h3>
+<p>​ 在当前测试窗口的主体中创建一个新的“
+script”标记，并将指定的文本添加到命令主
+体中。请注意，这些脚本标记中引发的 JS 异常不是由 Selenium
+管理的，因此，如果脚本 有可能引发异常，则应该将脚本包装在 try / catch
+块中。</p>
+<p>参数：</p>
+<ul class="simple">
+<li><p>script:要运行的 JavaScript 代码段。</p></li>
+</ul>
+</div>
+<div class="section" id="select">
+<h3>select<a class="headerlink" href="#select" title="Permalink to this headline">¶</a></h3>
+<p>​
+使用选项定位器从下拉菜单中选择一个元素。选项定位符提供了指定选择元素的不同方
+法(例如，label =，value =，id =，index
+=)。如果未提供选项定位符前缀，则将尝试在 标签上进行匹配。</p>
+<p>参数：</p>
+<ul class="simple">
+<li><p>select locator:标识下拉菜单的元素定位器。</p></li>
+<li><p>option:一个选项定位器，通常只是一个选项标签(例如“ John Smith”)。</p></li>
+</ul>
+</div>
+<div class="section" id="select-frame">
+<h3>select frame<a class="headerlink" href="#select-frame" title="Permalink to this headline">¶</a></h3>
+<p>​ 在当前窗口中选择一个框架。您可以通过从 0
+开始的索引号来选择帧(例如，选择 “ index = 0”的第一帧或“ index =
+2”的第三帧)。对于嵌套框架，您将需要多次调用
+此命令(对树中的每个框架都必须调用一次，直到到达所需的框架为止)。您可以使用
+“ relative = parent”选择父框架。要返回页面顶部，请使用“ relative =
+top”。</p>
+<p>参数：</p>
+<ul class="simple">
+<li><p>locator:元素定位器。</p></li>
+</ul>
+</div>
+<div class="section" id="select-window">
+<h3>select window<a class="headerlink" href="#select-window" title="Permalink to this headline">¶</a></h3>
+<p>​
+使用窗口定位器选择弹出窗口。选择弹出窗口后，所有命令都将转到该窗口。窗口定位
+器使用手柄选择窗口。</p>
+<p>参数：</p>
+<ul class="simple">
+<li><p>window handle:代表特定页面(选项卡或窗口)的句柄。</p></li>
+</ul>
+</div>
+<div class="section" id="send-keys">
+<h3>send keys<a class="headerlink" href="#send-keys" title="Permalink to this headline">¶</a></h3>
+<p>​
+模拟指定元素上的击键事件，就像您按键键入值一样。这模拟真实用户在指定字符串中
+键入每个字符;它也受到实际用户的限制，例如不能键入不可见或只读元素。这对于需要显
+式键事件的动态 UI
+小部件(如自动完成组合框)很有用。与简单的“类型”命令直接将指
+定的值强制进入页面不同，该命令不会替换现有内容。</p>
+<p>参数：</p>
+<ul class="simple">
+<li><p>locator:元素定位器。</p></li>
+<li><p>key sequence:可以键入的按键序列可用于发送按键(例如$ {KEY_ENTER})。</p></li>
+</ul>
+</div>
+<div class="section" id="set-speed">
+<h3>set speed<a class="headerlink" href="#set-speed" title="Permalink to this headline">¶</a></h3>
+<p>​ 设置执行速度(例如，设置每次 Selenium
+操作之后的延迟的毫秒长度)。默认情况下， 不存在此类延迟，例如，延迟为 0
+毫秒。此设置是全局设置，将影响所有测试运行，直到 更改。</p>
+<p>参数：</p>
+<ul class="simple">
+<li><p>wait time:等待时间(以毫秒为单位)。</p></li>
+</ul>
+</div>
+<div class="section" id="set-window-size">
+<h3>set window size<a class="headerlink" href="#set-window-size" title="Permalink to this headline">¶</a></h3>
+<p>​ 设置浏览器的窗口大小，包括浏览器的界面。</p>
+<p>参数：</p>
+<ul class="simple">
+<li><p>resolution:使用 WidthxHeight 指定窗口分辨率。(例如 1280x800)。</p></li>
+</ul>
+</div>
+<div class="section" id="store">
+<h3>store<a class="headerlink" href="#store" title="Permalink to this headline">¶</a></h3>
+<p>​ 将目标字符串另存为变量，以方便重用。</p>
+<p>参数：</p>
+<ul class="simple">
+<li><p>text:要使用的文本。</p></li>
+<li><p>variable name:不带括号的变量名。</p></li>
+</ul>
+</div>
+<div class="section" id="store-attribute">
+<h3>store attribute<a class="headerlink" href="#store-attribute" title="Permalink to this headline">¶</a></h3>
+<p>​
+获取元素属性的值。在不同的浏览器中，属性的值可能有所不同(例如，“样式”属性
+就是这种情况)。</p>
+<p>参数：</p>
+<ul class="simple">
+<li><p>attribute locator:元素定位符，后跟&#64;符号，然后是属性名称，例如“ foo &#64;
+bar”。</p></li>
+<li><p>variable name:不带括号的变量名。</p></li>
+</ul>
+</div>
+<div class="section" id="store-json">
+<h3>store json<a class="headerlink" href="#store-json" title="Permalink to this headline">¶</a></h3>
+<p>​ 未定义。</p>
+<p>参数：</p>
+<ul class="simple">
+<li><p>json:JavaScript 对象的字符串表示形式。</p></li>
+<li><p>Variable name:不带括号的变量名。</p></li>
+</ul>
+</div>
+<div class="section" id="store-text">
+<h3>store text<a class="headerlink" href="#store-text" title="Permalink to this headline">¶</a></h3>
+<p>​ 获取元素的文本并将其存储以备后用。这适用于任何包含文本的元素。</p>
+<p>参数：</p>
+<ul class="simple">
+<li><p>locator:元素定位器。</p></li>
+<li><p>variable name:不带括号的变量名。</p></li>
+</ul>
+</div>
+<div class="section" id="store-title">
+<h3>store title<a class="headerlink" href="#store-title" title="Permalink to this headline">¶</a></h3>
+<p>​ 获取当前页面的标题。</p>
+<p>参数：</p>
+<ul class="simple">
+<li><p>text:要使用的文本。</p></li>
+<li><p>variable name:不带括号的变量名。</p></li>
+</ul>
+</div>
+<div class="section" id="store-value">
+<h3>store value<a class="headerlink" href="#store-value" title="Permalink to this headline">¶</a></h3>
+<p>​ 获取 element 的值并将其存储以供以后使用。这适用于任何输入类型元素。</p>
+<p>参数：</p>
+<ul class="simple">
+<li><p>locator:元素定位器。</p></li>
+<li><p>variable name:不带括号的变量名。</p></li>
+</ul>
+</div>
+<div class="section" id="store-window-handle">
+<h3>store window handle<a class="headerlink" href="#store-window-handle" title="Permalink to this headline">¶</a></h3>
+<p>​ 获取当前页面的句柄。</p>
+<p>参数：</p>
+<ul class="simple">
+<li><p>Window handle:代表特定页面(选项卡或窗口)的句柄。</p></li>
+</ul>
+</div>
+<div class="section" id="store-xpath-count">
+<h3>store xpath count<a class="headerlink" href="#store-xpath-count" title="Permalink to this headline">¶</a></h3>
+<p>​ 获取与指定 xpath 匹配的节点数(例如，“ // table”将给出表数)。</p>
+<p>参数：</p>
+<ul class="simple">
+<li><p>xpath:要评估的 xpath 表达式。</p></li>
+<li><p>variable name:不带括号的变量名。</p></li>
+</ul>
+</div>
+<div class="section" id="submit">
+<h3>submit<a class="headerlink" href="#submit" title="Permalink to this headline">¶</a></h3>
+<p>​
+提交指定的表格。这对于没有提交按钮的表单特别有用，例如单输入“搜索”表单。</p>
+<p>参数：</p>
+<ul class="simple">
+<li><p>form locator:您要提交的表单的元素定位器。</p></li>
+</ul>
+</div>
+<div class="section" id="times-1">
+<span id="id74"></span><h3>times<a class="headerlink" href="#times-1" title="Permalink to this headline">¶</a></h3>
+<p>​ 创建一个循环执行 n 次执行命令。</p>
+<p>参数：</p>
+<ul class="simple">
+<li><p>times:控制流循环将执行其块内命令的尝试次数。</p></li>
+<li><p>loop
+limit:一个可选参数，指定循环控制流命令可以执行的最大次数。这样可以防止无限循环。默认值设置为
+1000。</p></li>
+</ul>
+</div>
+<div class="section" id="type">
+<h3>type<a class="headerlink" href="#type" title="Permalink to this headline">¶</a></h3>
+<p>​
+设置输入字段的值，就像您在其中键入一样。也可以用于设置组合框，复选框等的值。
+在这种情况下，value 应该是所选选项的值，而不是可见的文本。仅限
+Chrome:如果给出 了文件路径，它将被上传到输入(对于 type =
+file)，注意:不支持 XPath 定位器。</p>
+<p>参数：</p>
+<ul class="simple">
+<li><p>locator:元素定位器。</p></li>
+<li><p>value:要输入的值。</p></li>
+</ul>
+</div>
+<div class="section" id="uncheck">
+<h3>uncheck<a class="headerlink" href="#uncheck" title="Permalink to this headline">¶</a></h3>
+<p>​ 取消选中切换按钮(复选框/单选)。</p>
+<p>参数：</p>
+<ul class="simple">
+<li><p>locator:元素定位器。</p></li>
+</ul>
+</div>
+<div class="section" id="verify">
+<h3>verify<a class="headerlink" href="#verify" title="Permalink to this headline">¶</a></h3>
+<p>​
+软断言变量是期望值。变量的值将转换为字符串以进行比较。即使验证失败，测试也将
+继续。</p>
+<p>参数：</p>
+<ul class="simple">
+<li><p>variable name:不带括号的变量名。</p></li>
+<li><p>expected value:您期望变量包含的结果(例如，true，false 或其他某个值)。</p></li>
+</ul>
+</div>
+<div class="section" id="verify-checked">
+<h3>verify checked<a class="headerlink" href="#verify-checked" title="Permalink to this headline">¶</a></h3>
+<p>​ 软断言已选中切换按钮(复选框/单选)。即使验证失败，测试也将继续。</p>
+<p>参数：</p>
+<ul class="simple">
+<li><p>locator:元素定位器。</p></li>
+</ul>
+</div>
+<div class="section" id="verify-editable">
+<h3>verify editable<a class="headerlink" href="#verify-editable" title="Permalink to this headline">¶</a></h3>
+<p>​
+软断言指定的输入元素是否可编辑(例如，尚未禁用)。即使验证失败，测试也将继续。</p>
+<p>参数：</p>
+<ul class="simple">
+<li><p>locator:元素定位器。</p></li>
+</ul>
+</div>
+<div class="section" id="verify-element-present">
+<h3>verify element present<a class="headerlink" href="#verify-element-present" title="Permalink to this headline">¶</a></h3>
+<p>​ 软断言指定的元素在页面上的某处。即使验证失败，测试也将继续。</p>
+<p>参数：</p>
+<ul class="simple">
+<li><p>locator:元素定位器。</p></li>
+</ul>
+</div>
+<div class="section" id="verify-element-not-present">
+<h3>verify element not present<a class="headerlink" href="#verify-element-not-present" title="Permalink to this headline">¶</a></h3>
+<p>​ 软断言指定的元素不在页面上。即使验证失败，测试也将继续。</p>
+<p>参数：</p>
+<ul class="simple">
+<li><p>locator:元素定位器。</p></li>
+</ul>
+</div>
+<div class="section" id="verify-not-checked">
+<h3>verify not checked<a class="headerlink" href="#verify-not-checked" title="Permalink to this headline">¶</a></h3>
+<p>​ 软断言未选中切换按钮(复选框/单选)。即使验证失败，测试也将继续。</p>
+<p>参数：</p>
+<ul class="simple">
+<li><p>locator:元素定位器。</p></li>
+</ul>
+</div>
+<div class="section" id="verify-not-editable">
+<h3>verify not editable<a class="headerlink" href="#verify-not-editable" title="Permalink to this headline">¶</a></h3>
+<p>​
+软断言指定的输入元素是否不可编辑(例如，尚未禁用)。即使验证失败，测试也将继
+续。</p>
+<p>参数：</p>
+<ul class="simple">
+<li><p>locator:元素定位器。</p></li>
+</ul>
+</div>
+<div class="section" id="verify-not-selected-value">
+<h3>verify not selected value<a class="headerlink" href="#verify-not-selected-value" title="Permalink to this headline">¶</a></h3>
+<p>​
+软断言所期望的元素尚未在其选择属性的选择菜单中选择。即使验证失败，测试也将继
+续。</p>
+<p>参数：</p>
+<ul class="simple">
+<li><p>select locator:标识下拉菜单的元素定位器。</p></li>
+<li><p>option:一个选项定位器，通常只是一个选项标签(例如“ John Smith”)。</p></li>
+</ul>
+</div>
+<div class="section" id="verify-not-text">
+<h3>verify not text<a class="headerlink" href="#verify-not-text" title="Permalink to this headline">¶</a></h3>
+<p>​ 软断言元素的文本不存在。即使验证失败，测试也将继续。</p>
+<p>参数：</p>
+<ul class="simple">
+<li><p>locator:元素定位器。</p></li>
+<li><p>text:要使用的文本。</p></li>
+</ul>
+</div>
+<div class="section" id="verify-selected-label">
+<h3>verify selected label<a class="headerlink" href="#verify-selected-label" title="Permalink to this headline">¶</a></h3>
+<p>​ 对指定的 select
+元素中的选定选项进行软断言。即使验证失败，测试也将继续。</p>
+<p>参数：</p>
+<ul class="simple">
+<li><p>select locator:标识下拉菜单的元素定位器。</p></li>
+<li><p>text:完全匹配的字符串。正在支持模式匹配。有关详细信息，请参见
+<a class="reference external" href="https://github.com/SeleniumHQ/selenium-ide/issues/141">https://github.com/SeleniumHQ/selenium-ide/issues/141</a>。</p></li>
+</ul>
+</div>
+<div class="section" id="verify-selected-value">
+<h3>verify selected value<a class="headerlink" href="#verify-selected-value" title="Permalink to this headline">¶</a></h3>
+<p>​
+软断言所期望的元素已通过其选项属性在选择菜单中选择。即使验证失败，测试也将继续。</p>
+<p>参数：</p>
+<ul class="simple">
+<li><p>select locator:标识下拉菜单的元素定位器。</p></li>
+<li><p>option:一个选项定位器，通常只是一个选项标签(例如“ John Smith”)。</p></li>
+</ul>
+</div>
+<div class="section" id="verify-text">
+<h3>verify text<a class="headerlink" href="#verify-text" title="Permalink to this headline">¶</a></h3>
+<p>​ 软断言元素的文本存在。即使验证失败，测试也将继续。</p>
+<p>参数：</p>
+<ul class="simple">
+<li><p>locator:元素定位器。</p></li>
+<li><p>text:要使用的文本。</p></li>
+</ul>
+</div>
+<div class="section" id="verify-title">
+<h3>verify title<a class="headerlink" href="#verify-title" title="Permalink to this headline">¶</a></h3>
+<p>​ 软断言当前页面的标题包含提供的文本。即使验证失败，测试也将继续。</p>
+<p>参数：</p>
+<ul class="simple">
+<li><p>text:要使用的文本。</p></li>
+</ul>
+</div>
+<div class="section" id="verify-value">
+<h3>verify value<a class="headerlink" href="#verify-value" title="Permalink to this headline">¶</a></h3>
+<p>​ 软断言输入字段的(经空白修饰的)值(或带有 value
+参数的其他任何值)。对于复选 框/单选元素，根据是否选中该元素，其值为“
+on”或“ off”。即使验证失败，测试也将 继续。</p>
+<p>参数：</p>
+<ul>
+<li><p>locator:元素定位器。</p></li>
+<li><p>text:完全匹配的字符串。正在支持模式匹配。有关详细信息，请参见</p>
+<p><a class="reference external" href="https://github.com/SeleniumHQ/selenium-ide/issues/141">https://github.com/SeleniumHQ/selenium-ide/issues/141</a>。</p>
+</li>
+</ul>
+</div>
+<div class="section" id="wait-for-element-editable">
+<h3>wait for element editable<a class="headerlink" href="#wait-for-element-editable" title="Permalink to this headline">¶</a></h3>
+<p>​ 等待元素可编辑。</p>
+<p>参数：</p>
+<ul class="simple">
+<li><p>locator:元素定位器。</p></li>
+<li><p>wait time:等待时间(以毫秒为单位)。</p></li>
+</ul>
+</div>
+<div class="section" id="wait-for-element-not-editable">
+<h3>wait for element not editable<a class="headerlink" href="#wait-for-element-not-editable" title="Permalink to this headline">¶</a></h3>
+<p>​ 等待元素不可编辑。</p>
+<p>参数：</p>
+<ul class="simple">
+<li><p>locator:元素定位器。</p></li>
+<li><p>wait time:等待时间(以毫秒为单位)。</p></li>
+</ul>
+</div>
+<div class="section" id="wait-for-element-not-present">
+<h3>wait for element not present<a class="headerlink" href="#wait-for-element-not-present" title="Permalink to this headline">¶</a></h3>
+<p>​ 等待目标元素不出现在页面上。</p>
+<p>参数：</p>
+<ul class="simple">
+<li><p>locator:元素定位器。</p></li>
+<li><p>wait time:等待时间(以毫秒为单位)。</p></li>
+</ul>
+</div>
+<div class="section" id="wait-for-element-not-visible">
+<h3>wait for element not visible<a class="headerlink" href="#wait-for-element-not-visible" title="Permalink to this headline">¶</a></h3>
+<p>​ 等待目标元素在页面上不可见。</p>
+<p>参数：</p>
+<ul class="simple">
+<li><p>locator:元素定位器。</p></li>
+<li><p>wait time:等待时间(以毫秒为单位)。</p></li>
+</ul>
+</div>
+<div class="section" id="wait-for-element-present">
+<h3>wait for element present<a class="headerlink" href="#wait-for-element-present" title="Permalink to this headline">¶</a></h3>
+<p>​ 等待目标元素出现在页面上。</p>
+<p>参数：</p>
+<ul class="simple">
+<li><p>locator:元素定位器。</p></li>
+<li><p>wait time:等待时间(以毫秒为单位)。</p></li>
+</ul>
+</div>
+<div class="section" id="wait-for-element-visible">
+<h3>wait for element visible<a class="headerlink" href="#wait-for-element-visible" title="Permalink to this headline">¶</a></h3>
+<p>​ 等待目标元素在页面上可见。</p>
+<p>参数：</p>
+<ul class="simple">
+<li><p>locator:元素定位器。</p></li>
+<li><p>wait time:等待时间(以毫秒为单位)。</p></li>
+</ul>
+</div>
+<div class="section" id="webdriver-answer-on-visible-prompt">
+<h3>webdriver answer on visible prompt<a class="headerlink" href="#webdriver-answer-on-visible-prompt" title="Permalink to this headline">¶</a></h3>
+<p>​ 影响当前显示的 alert 对话框。此命令指示 Selenium
+为它提供指定的应答。如果尚未 出现 alert
+对话框，请改用“在下一个提示时响应”。</p>
+<p>参数：</p>
+<ul class="simple">
+<li><p>answer:提示弹出窗口时给出的答案。</p></li>
+</ul>
+</div>
+<div class="section" id="webdriver-choose-cancel-on-visible-confirmation">
+<h3>webdriver choose cancel on visible confirmation<a class="headerlink" href="#webdriver-choose-cancel-on-visible-confirmation" title="Permalink to this headline">¶</a></h3>
+<p>​ 影响当前显示的 conformation 对话框;。此命令指示 Selenium
+取消它。如果该对话 框尚未出现，请改用“在下次确认时选择取消”。</p>
+</div>
+<div class="section" id="webdriver-choose-cancel-on-visible-prompt">
+<h3>webdriver choose cancel on visible prompt<a class="headerlink" href="#webdriver-choose-cancel-on-visible-prompt" title="Permalink to this headline">¶</a></h3>
+<p>​ 影响当前显示的 prompt 对话框。此命令指示 Selenium
+取消它。如果该对话框尚未出 现，请改用“在下一个提示时选择取消”。</p>
+</div>
+<div class="section" id="webdriver-choose-ok-on-visible-confirmation">
+<h3>webdriver choose ok on visible confirmation<a class="headerlink" href="#webdriver-choose-ok-on-visible-confirmation" title="Permalink to this headline">¶</a></h3>
+<p>​ 影响当前显示的 conformation 对话框。此命令指示 Selenium
+接受它。如果该对话框 尚未出现，请改用“在下次确认时选择确定”。</p>
+</div>
+<div class="section" id="while-1">
+<span id="id75"></span><h3>while<a class="headerlink" href="#while-1" title="Permalink to this headline">¶</a></h3>
+<p>​ 只要提供的条件表达式为 true，就创建一个循环重复执行执行命令的循环。</p>
+<p>参数：</p>
+<ul class="simple">
+<li><p>conditional expression:JavaScript
+表达式，它返回布尔值以用于控制流命令。</p></li>
+<li><p>loop
+limit:一个可选参数，指定循环控制流命令可以执行的最大次数。这样可以防止无限循环。默认值设置为
+1000。</p></li>
+</ul>
+</div>
+</div>
+<div class="section" id="id76">
+<h2>七、参数<a class="headerlink" href="#id76" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="alerttext">
+<h3>alertText<a class="headerlink" href="#alerttext" title="Permalink to this headline">¶</a></h3>
+<p>名称：警报文本</p>
+<p>描述：要检查的文本</p>
+</div>
+<div class="section" id="answer">
+<h3>answer<a class="headerlink" href="#answer" title="Permalink to this headline">¶</a></h3>
+<p>名称：应答</p>
+<p>描述：响应弹出提示而给的答案。</p>
+</div>
+<div class="section" id="attributelocator">
+<h3>attributeLocator<a class="headerlink" href="#attributelocator" title="Permalink to this headline">¶</a></h3>
+<p>名称：属性定位器</p>
+<p>描述：元素定位符，后跟一个&#64;符号，然后是属性名称，例如“ foo &#64; bar”。</p>
+</div>
+<div class="section" id="arrayvariablename">
+<h3>arrayVariableName<a class="headerlink" href="#arrayvariablename" title="Permalink to this headline">¶</a></h3>
+<p>名称:数组变量名称</p>
+<p>描述:包含 JavaScript 数组的变量的名称。</p>
+</div>
+<div class="section" id="conditionalexpression">
+<h3>conditionalExpression<a class="headerlink" href="#conditionalexpression" title="Permalink to this headline">¶</a></h3>
+<p>名称:条件表达式</p>
+<p>描述:返回一个布尔结果以用于控制流命令的 JavaScript 表达式。</p>
+</div>
+<div class="section" id="coord">
+<h3>coord<a class="headerlink" href="#coord" title="Permalink to this headline">¶</a></h3>
+<p>名称:字符串</p>
+<p>描述:指定鼠标事件相对于从定位器找到的元素的 x，y 位置(例如-10,20)。</p>
+<p>exceptedValue</p>
+<p>名称:期望值</p>
+<p>描述:您希望变量包含的结果(例如，true，false 或其他某个值)。</p>
+</div>
+<div class="section" id="expression">
+<h3>expression<a class="headerlink" href="#expression" title="Permalink to this headline">¶</a></h3>
+<p>名称:表达</p>
+<p>描述:您要存储的值。</p>
+</div>
+<div class="section" id="formlocator">
+<h3>formLocator<a class="headerlink" href="#formlocator" title="Permalink to this headline">¶</a></h3>
+<p>名称:表单定位器</p>
+<p>描述:要提交的表单的元素定位器。</p>
+</div>
+<div class="section" id="handle">
+<h3>handle<a class="headerlink" href="#handle" title="Permalink to this headline">¶</a></h3>
+<p>名称:句柄</p>
+<p>描述:代表特定页面(选项卡或窗口)的句柄。</p>
+</div>
+<div class="section" id="iteratorvariablename">
+<h3>iteratorVariableName<a class="headerlink" href="#iteratorvariablename" title="Permalink to this headline">¶</a></h3>
+<p>名称:迭代器变量名称</p>
+<p>描述:在循环控制流命令中迭代集合时使用的变量名称(例如，每个变量)。</p>
+</div>
+<div class="section" id="json">
+<h3>json<a class="headerlink" href="#json" title="Permalink to this headline">¶</a></h3>
+<p>名称:json</p>
+<p>描述:JavaScript 对象的字符串表示形式。</p>
+</div>
+<div class="section" id="keysequence">
+<h3>keySequence<a class="headerlink" href="#keysequence" title="Permalink to this headline">¶</a></h3>
+<p>名称:按键序列</p>
+<p>描述:可以键入的键序列可用于发送键击(例如$ {KEY_ENTER})。</p>
+</div>
+<div class="section" id="locator">
+<h3>locator<a class="headerlink" href="#locator" title="Permalink to this headline">¶</a></h3>
+<p>名称：定位器</p>
+<p>描述：元素定位器</p>
+</div>
+<div class="section" id="locatorofdragdestinationobject">
+<h3>locatorOfDragDestinationObject<a class="headerlink" href="#locatorofdragdestinationobject" title="Permalink to this headline">¶</a></h3>
+<p>名称:拖动目标对象的定位器</p>
+<p>描述:元素的定位器，其位置(例如，其中最中心的像素)将成为要拖动的对象的定位
+器被放置的点。</p>
+</div>
+<div class="section" id="locatorofobjecttobedragged">
+<h3>locatorOfObjectToBeDragged<a class="headerlink" href="#locatorofobjecttobedragged" title="Permalink to this headline">¶</a></h3>
+<p>名称:要拖动的对象的定位器</p>
+<p>描述:要拖动的元素的定位器。</p>
+</div>
+<div class="section" id="looplimit">
+<h3>loopLimit<a class="headerlink" href="#looplimit" title="Permalink to this headline">¶</a></h3>
+<p>名称:循环限制</p>
+<p>描述:可选参数，指定循环控制流命令可以执行的最大次数。这样可以防止无限循环。
+默认值设置为 1000。</p>
+</div>
+<div class="section" id="message">
+<h3>message<a class="headerlink" href="#message" title="Permalink to this headline">¶</a></h3>
+<p>名称:消息</p>
+<p>描述:要打印的消息。</p>
+</div>
+<div class="section" id="optionlocator">
+<h3>optionLocator<a class="headerlink" href="#optionlocator" title="Permalink to this headline">¶</a></h3>
+<p>名称:选项</p>
+<p>描述:一个选项定位器，通常只是一个选项标签(例如“ John Smith”)。</p>
+</div>
+<div class="section" id="pattern">
+<h3>pattern<a class="headerlink" href="#pattern" title="Permalink to this headline">¶</a></h3>
+<p>名称:文字</p>
+<p>描述:完全匹配的字符串。正在支持模式匹配。有关详细信息，请参见
+<a class="reference external" href="https://github.com/SeleniumHQ/selenium-ide/issues/141">https://github.com/SeleniumHQ/selenium-ide/issues/141</a>。</p>
+</div>
+<div class="section" id="region">
+<h3>region<a class="headerlink" href="#region" title="Permalink to this headline">¶</a></h3>
+<p>名称:区域</p>
+<p>描述:指定一个具有坐标和长度的矩形(例如，“ x:257，y:300，宽度:462，高
+度:280”)。</p>
+</div>
+<div class="section" id="resolution">
+<h3>resolution<a class="headerlink" href="#resolution" title="Permalink to this headline">¶</a></h3>
+<p>名称:分辨率</p>
+<p>描述:使用 WidthxHeight 指定窗口分辨率。(例如 1280x800)。</p>
+</div>
+<div class="section" id="script">
+<h3>script<a class="headerlink" href="#script" title="Permalink to this headline">¶</a></h3>
+<p>名称:脚本</p>
+<p>描述:要运行的 JavaScript 代码段。</p>
+</div>
+<div class="section" id="selectlocator">
+<h3>selectLocator<a class="headerlink" href="#selectlocator" title="Permalink to this headline">¶</a></h3>
+<p>名称:选择定位器</p>
+<p>描述:标识下拉菜单的元素定位器。</p>
+</div>
+<div class="section" id="testcase">
+<h3>testCase<a class="headerlink" href="#testcase" title="Permalink to this headline">¶</a></h3>
+<p>名称:测试用例</p>
+<p>描述:项目中的测试用例名称。</p>
+</div>
+<div class="section" id="text">
+<h3>text<a class="headerlink" href="#text" title="Permalink to this headline">¶</a></h3>
+<p>名称：文本</p>
+<p>描述：要使用的文字</p>
+</div>
+<div class="section" id="times-2">
+<span id="id77"></span><h3>times<a class="headerlink" href="#times-2" title="Permalink to this headline">¶</a></h3>
+<p>名称：次</p>
+<p>描述：控制流循环将执行其块内命令的尝试次数。</p>
+</div>
+<div class="section" id="url">
+<h3>url<a class="headerlink" href="#url" title="Permalink to this headline">¶</a></h3>
+<p>名称:url</p>
+<p>描述:要打开的 URL(可以是相对的或绝对的)。</p>
+</div>
+<div class="section" id="value">
+<h3>value<a class="headerlink" href="#value" title="Permalink to this headline">¶</a></h3>
+<p>名称:值</p>
+<p>描述:要输入的值。</p>
+</div>
+<div class="section" id="variablename">
+<h3>variableName<a class="headerlink" href="#variablename" title="Permalink to this headline">¶</a></h3>
+<p>名称:变量名</p>
+<p>描述:不带括号的变量名称。</p>
+</div>
+<div class="section" id="waittime">
+<h3>waitTime<a class="headerlink" href="#waittime" title="Permalink to this headline">¶</a></h3>
+<p>名称:等待时间</p>
+<p>描述:等待时间(以毫秒为单位)。</p>
+</div>
+<div class="section" id="xpath">
+<h3>xpath<a class="headerlink" href="#xpath" title="Permalink to this headline">¶</a></h3>
+<p>名称:xpath</p>
+<p>描述:要评估的 xpath 表达式。</p>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="Selenium-plugins.html" class="btn btn-neutral float-right" title="二、插件" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="index.html" class="btn btn-neutral float-left" title="Welcome to SeleniumIDEBook’s documentation!" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2020, zhangyl
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
